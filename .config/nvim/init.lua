@@ -552,7 +552,7 @@ vim.keymap.set('t', '<Esc>', [[<C-\><C-n>]])
 
 vim.keymap.set('n', '<leader>c', [[:lcd %:p:h]], { desc = '[C]hange to current directory'} )
 vim.keymap.set('n', '<leader>u', [[:lcd ..]], { desc = 'Move one directory [U]p'} )
-vim.keymap.set('n', '<C-t>', [[:$tabnew:tablast]], { desc = 'Create new [T]ab'})
+vim.keymap.set('n', '<C-t>', [[<C-W>s<C-W>T]], { desc = 'Create new [T]ab'})
 vim.keymap.set('n', '<A-d>', [[<C-PageDown>]])
 vim.keymap.set('n', '<A-a>', [[<C-PageUp>]])
 vim.keymap.set('n', '<A-1>', [[1<C-PageDown>]])
