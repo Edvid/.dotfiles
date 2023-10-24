@@ -139,7 +139,13 @@ require('lazy').setup({
      config = function()
        vim.cmd.colorscheme 'dracula'
        vim.api.nvim_set_hl(0, 'Normal', { bg = "NONE" })
-       vim.api.nvim_set_hl(0, 'Cursor', {reverse = true })
+       vim.api.nvim_set_hl(0, 'Cursor', { reverse = true })
+       vim.api.nvim_set_hl(0, 'StatusLine',{ bg = "NONE" })
+       vim.api.nvim_set_hl(0, 'StatusLineNC',{ bg = "NONE" })
+       vim.api.nvim_set_hl(0, 'TabLine',{ bg = "NONE" })
+       vim.api.nvim_set_hl(0, 'TabLineFill',{ bg = "NONE" })
+       vim.api.nvim_set_hl(0, 'TabLineSel',{ fg = "#BD93F9" })
+       vim.api.nvim_set_hl(0, 'WinSeparator',{ bg = "NONE" })
      end,
   },
 
@@ -311,6 +317,19 @@ require('telescope').setup {
 
 require('ibl').setup { 
   indent = { char = "┆" },
+}
+
+local lualine_theme = require('lualine.themes.auto')
+lualine_theme.normal.c.bg = "NONE"
+lualine_theme.insert.c.bg = "NONE"
+lualine_theme.visual.c.bg = "NONE"
+lualine_theme.replace.c.bg = "NONE"
+lualine_theme.command.c.bg = "NONE"
+lualine_theme.inactive.c.bg = "NONE"
+require('lualine').setup {
+  options = {
+    theme = lualine_theme
+  }
 }
 
 
