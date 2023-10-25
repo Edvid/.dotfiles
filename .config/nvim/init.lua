@@ -142,9 +142,8 @@ require('lazy').setup({
        vim.api.nvim_set_hl(0, 'Cursor', { reverse = true })
        vim.api.nvim_set_hl(0, 'StatusLine',{ bg = "NONE" })
        vim.api.nvim_set_hl(0, 'StatusLineNC',{ bg = "NONE" })
-       vim.api.nvim_set_hl(0, 'TabLine',{ bg = "NONE" })
+       vim.api.nvim_set_hl(0, 'TabLine',{ bg = "NONE", fg = "#BD93F9" })
        vim.api.nvim_set_hl(0, 'TabLineFill',{ bg = "NONE" })
-       vim.api.nvim_set_hl(0, 'TabLineSel',{ fg = "#BD93F9" })
        vim.api.nvim_set_hl(0, 'WinSeparator',{ bg = "NONE" })
      end,
   },
@@ -339,7 +338,7 @@ pcall(require('telescope').load_extension, 'fzf')
 -- See `:help telescope.builtin`
 vim.keymap.set('n', '<leader>o', require('telescope.builtin').oldfiles, { desc = '[O]pen recently opened files' })
 vim.keymap.set('n', '<leader><space>', require('telescope.builtin').buffers, { desc = '[ ] Find existing buffers' })
-vim.keymap.set('n', '<leader>f', require('telescope.builtin').current_buffer_fuzzy_find, { desc = '[F] Search in current buffer like CTRL+F' })
+vim.keymap.set('n', '<leader>ss', require('telescope.builtin').current_buffer_fuzzy_find, { desc = '[S]earch in thi[s] buffer' })
 
 vim.keymap.set('n', '<leader>sg', require('telescope.builtin').git_files, { desc = '[S]earch [G]it Files' })
 vim.keymap.set('n', '<leader>sf', require('telescope.builtin').find_files, { desc = '[S]earch [F]iles' })
@@ -568,6 +567,7 @@ cmp.setup {
 -- vim: ts=2 sts=2 sw=2 et
 
 vim.keymap.set('t', '<Esc>', [[<C-\><C-n>]])
+vim.keymap.set('n', '<leader>f', [[/]])
 
 vim.keymap.set('n', '<leader>c', [[:lcd %:p:h]], { desc = '[C]hange to current directory'} )
 vim.keymap.set('n', '<leader>u', [[:lcd ..]], { desc = 'Move one directory [U]p'} )
