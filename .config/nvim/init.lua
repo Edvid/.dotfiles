@@ -157,15 +157,15 @@ require('lazy').setup({
         icons_enabled = false,
         theme = 'dracula',
         component_separators = '𝄄',
-        section_separators = '',
+        section_separators = '|',
       },
       sections = {
-        lualine_a = {'mode'},
-        lualine_b = {'branch', 'diff', 'diagnostics'},
-        lualine_c = {'filename'},
-        lualine_x = {'filetype', 'fileformat', 'encoding'},
-        lualine_y = {'progress'},
-        lualine_z = {'location'}
+        lualine_a = {'filename'},
+        lualine_b = {'filetype'},
+        lualine_c = {'diagnostics'},
+        lualine_x = {'diff'},
+        lualine_y = {'branch'},
+        lualine_z = {'fileformat', 'encoding'}
       },
     },
   },
@@ -314,17 +314,73 @@ require('telescope').setup {
   },
 }
 
-require('ibl').setup { 
+require('ibl').setup {
   indent = { char = "┆" },
 }
 
 local lualine_theme = require('lualine.themes.auto')
-lualine_theme.normal.c.bg = "NONE"
-lualine_theme.insert.c.bg = "NONE"
-lualine_theme.visual.c.bg = "NONE"
-lualine_theme.replace.c.bg = "NONE"
-lualine_theme.command.c.bg = "NONE"
-lualine_theme.inactive.c.bg = "NONE"
+local themecols = {
+   comment = "#6272A4",
+   yellow = "#F1FA8C",
+   purple = "#BD93F9",
+   pink = "#FF79C6",
+   bright_red = "#FF6E6E",
+   white = "#ABB2BF",
+}
+lualine_theme.normal = {
+  a = { fg = themecols.white, bg = "NONE", gui = "bold" },
+  b = { fg = themecols.white, bg = "NONE" },
+  c = { bg = "NONE" },
+  x = { bg = "NONE" },
+  y = { fg = themecols.white, bg = "NONE" },
+  z = { fg = themecols.white, bg = "NONE" }
+}
+
+lualine_theme.insert = {
+  a = { fg = themecols.purple, bg = "NONE", gui = "bold" },
+  b = { fg = themecols.purple, bg = "NONE" },
+  c = { bg = "NONE" },
+  x = { bg = "NONE" },
+  y = { fg = themecols.purple, bg = "NONE" },
+  z = { fg = themecols.purple, bg = "NONE" }
+}
+
+lualine_theme.visual = {
+  a = { fg = themecols.yellow, bg = "NONE", gui = "bold" },
+  b = { fg = themecols.yellow, bg = "NONE" },
+  c = { bg = "NONE" },
+  x = { bg = "NONE" },
+  y = { fg = themecols.yellow, bg = "NONE" },
+  z = { fg = themecols.yellow, bg = "NONE" }
+}
+
+lualine_theme.replace = {
+  a = { fg = themecols.bright_red, bg = "NONE", gui = "bold" },
+  b = { fg = themecols.bright_red, bg = "NONE" },
+  c = { bg = "NONE" },
+  x = { bg = "NONE" },
+  y = { fg = themecols.bright_red, bg = "NONE" },
+  z = { fg = themecols.bright_red, bg = "NONE" }
+}
+
+lualine_theme.command = {
+  a = { fg = themecols.pink, bg = "none", gui = "bold" },
+  b = { fg = themecols.pink, bg = "none" },
+  c = { bg = "none" },
+  x = { bg = "none" },
+  y = { fg = themecols.pink, bg = "none" },
+  z = { fg = themecols.pink, bg = "none" }
+}
+
+lualine_theme.inactive = {
+  a = { fg = themecols.comment, bg = "none", gui = "bold" },
+  b = { fg = themecols.comment, bg = "none" },
+  c = { bg = "none" },
+  x = { bg = "none" },
+  y = { fg = themecols.comment, bg = "none" },
+  z = { fg = themecols.comment, bg = "none" }
+}
+
 require('lualine').setup {
   options = {
     theme = lualine_theme
@@ -568,6 +624,7 @@ cmp.setup {
 
 vim.keymap.set('t', '<Esc>', [[<C-\><C-n>]])
 vim.keymap.set('n', '<leader>f', [[/]])
+vim.keymap.set('n', '<leader>q', [[@]])
 
 vim.keymap.set('n', '<leader>c', [[:lcd %:p:h]], { desc = '[C]hange to current directory'} )
 vim.keymap.set('n', '<leader>u', [[:lcd ..]], { desc = 'Move one directory [U]p'} )
