@@ -634,6 +634,9 @@ vim.keymap.set('t', '<Esc>', [[<C-\><C-n>]])
 vim.keymap.set('n', '<leader>f', [[/]])
 vim.keymap.set('n', '<leader>q', [[@]])
 
+vim.keymap.set({ 'n', 'v', 'o' }, '<leader>a', [[^]])
+vim.keymap.set({ 'n', 'v', 'o' }, '<leader>d', [[$]])
+
 vim.keymap.set('n', '<leader>c', [[:lcd %:p:h]], { desc = '[C]hange to current directory'} )
 vim.keymap.set('n', '<leader>u', [[:lcd ..]], { desc = 'Move one directory [U]p'} )
 vim.keymap.set('n', '<C-t>', [[<C-W>s<C-W>T]], { desc = 'Create new [T]ab'})
