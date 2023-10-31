@@ -9,3 +9,5 @@
 	pager = cat
 [credential]
 	helper = store --file ~/.git.credentials
+[push]
+    autoSetupRemote = true
