@@ -410,8 +410,8 @@ vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags, { desc
 vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string, { desc = '[S]earch current [W]ord' })
 vim.keymap.set('n', '<leader>sc', require('telescope.builtin').live_grep, { desc = '[S]earch [C]ontents' })
 vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
-vim.keymap.set('n', '<leader>sr', [[:%s///<Left><Left>]], { desc = '[S]earch & global [R]eplace' })
-vim.keymap.set('n', '<leader>slr', [[:s///<Left><Left>]], { desc = '[S]earch & this [L]line [R]eplace' })
+vim.keymap.set('n', '<leader>sr', [[:%s///g<Left><Left><Left>]], { desc = '[S]earch & global [R]eplace' })
+vim.keymap.set('n', '<leader>slr', [[:s///g<Left><Left><Left>]], { desc = '[S]earch & this [L]line [R]eplace' })
 
 -- [[ Configure Treesitter ]]
 -- See `:help nvim-treesitter`
@@ -634,7 +634,6 @@ vim.keymap.set('t', '<Esc>', [[<C-\><C-n>]])
 vim.keymap.set('n', '<leader>f', [[/]])
 vim.keymap.set('n', '<leader>q', [[@]])
 
-vim.keymap.set({ 'n', 'v', 'o' }, '<leader>a', [[^]])
 vim.keymap.set({ 'n', 'v', 'o' }, '<leader>d', [[$]])
 
 vim.keymap.set('n', '<leader>c', [[:lcd %:p:h]], { desc = '[C]hange to current directory'} )
