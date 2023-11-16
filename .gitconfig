@@ -4,6 +4,7 @@
 	email = spacemastr@gmail.com
 	name = Edvid
 [alias]
+	gr = log HEAD~5..HEAD --graph --all --abbrev-commit --decorate --pretty=format:'%C(bold 5)%h%C(reset)%C(auto) - %D%n%C(31)%an, %ar%C(reset)%C(auto)%n%s%C(reset)%n'
 	graph = log --graph --all --abbrev-commit --decorate --pretty=format:'%C(bold 5)%h%C(reset)%C(auto) - %D%n%C(31)%an, %ar%C(reset)%C(auto)%n%s%C(reset)%n'
 [core]
 	pager = cat
