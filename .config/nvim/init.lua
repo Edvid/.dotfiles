@@ -230,15 +230,15 @@ require('lazy').setup({
     end,
   },
 
-  {
-    "FabijanZulj/blame.nvim"
-  },
-
   -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
   --       These are some example plugins that I've included in the kickstart repository.
   --       Uncomment any of the lines below to enable them.
   -- require 'kickstart.plugins.autoformat',
   -- require 'kickstart.plugins.debug',
+
+  {
+    "FabijanZulj/blame.nvim"
+  },
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    You can use this folder to prevent any conflicts with this init.lua if you're interested in keeping
@@ -644,14 +644,15 @@ cmp.setup {
 -- vim: ts=2 sts=2 sw=2 et
 
 vim.keymap.set('n', '<leader>who', [[:ToggleBlame virtual]])
+vim.keymap.set('n', '<leader>cl', [[:%bd!|e#]], { desc = '[CL]ear buffers except current'} )
+vim.keymap.set('n', '<leader>col', [[:set cc=]], { desc = 'Color in [COL]umn at given number'} )
+
 vim.keymap.set('t', '<Esc>', [[<C-\><C-n>]])
 vim.keymap.set('n', '<leader>f', [[/]])
 vim.keymap.set('n', '<leader>q', [[@]])
 
 vim.keymap.set({ 'n', 'v', 'o' }, '<leader>d', [[$]])
 
-vim.keymap.set('n', '<leader>c', [[:lcd %:p:h]], { desc = '[C]hange to current directory'} )
-vim.keymap.set('n', '<leader>u', [[:lcd ..]], { desc = 'Move one directory [U]p'} )
 vim.keymap.set('n', '<C-t>', [[<C-W>s<C-W>T]], { desc = 'Create new [T]ab'})
 vim.keymap.set('n', '<A-d>', [[<C-PageDown>]])
 vim.keymap.set('n', '<A-a>', [[<C-PageUp>]])
