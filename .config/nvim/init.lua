@@ -697,8 +697,7 @@ cmp.setup {
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
 
-vim.keymap.set('n', '<leader>who', [[:ToggleBlame virtual]])
-vim.keymap.set('n', '<leader>cl', [[:%bd!|e#]], { desc = '[CL]ear buffers except current'} )
+vim.keymap.set('n', '<leader>who', [[:ToggleBlame virtual<CR>]])
 vim.keymap.set('n', '<leader>col', [[:set cc=]], { desc = 'Color in [COL]umn at given number'} )
 
 vim.keymap.set('t', '<Esc>', [[<C-\><C-n>]])
