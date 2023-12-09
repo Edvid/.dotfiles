@@ -240,6 +240,10 @@ require('lazy').setup({
     "FabijanZulj/blame.nvim"
   },
 
+  {
+    "Asheq/close-buffers.vim"
+  },
+
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    You can use this folder to prevent any conflicts with this init.lua if you're interested in keeping
   --    up-to-date with whatever is in the kickstart repo.
@@ -698,6 +702,7 @@ cmp.setup {
 -- vim: ts=2 sts=2 sw=2 et
 
 vim.keymap.set('n', '<leader>who', [[:ToggleBlame virtual<CR>]])
+vim.keymap.set('n', '<leader>cl', [[:Bd other<CR>]])
 vim.keymap.set('n', '<leader>col', [[:set cc=]], { desc = 'Color in [COL]umn at given number'} )
 
 vim.keymap.set('t', '<Esc>', [[<C-\><C-n>]])
