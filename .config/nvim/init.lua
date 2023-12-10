@@ -244,6 +244,14 @@ require('lazy').setup({
     "Asheq/close-buffers.vim"
   },
 
+  {
+    '0x100101/lab.nvim',
+    build = 'cd js && npm ci',
+    dependencies =  {
+      'nvim-lua/plenary.nvim',
+    },
+  }
+
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    You can use this folder to prevent any conflicts with this init.lua if you're interested in keeping
   --    up-to-date with whatever is in the kickstart repo.
@@ -412,6 +420,7 @@ require('lualine').setup {
   }
 }
 
+require('lab').setup { }
 
 -- Enable telescope fzf native, if installed
 pcall(require('telescope').load_extension, 'fzf')
@@ -695,6 +704,7 @@ cmp.setup {
   sources = {
     { name = 'nvim_lsp' },
     { name = 'luasnip' },
+    { name = 'lab.quick_data', keyword_length = 4 },
   },
 }
 
