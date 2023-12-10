@@ -73,7 +73,7 @@ require('lazy').setup({
   'tpope/vim-rhubarb',
 
   -- Detect tabstop and shiftwidth automatically
-  'Edvid/vim-sleuth-tabstop-4',
+  'tpope/vim-sleuth',
 
   -- NOTE: This is where your plugins related to LSP can be installed.
   --  The configuration is done below. Search for lspconfig to find it below.
@@ -710,6 +710,10 @@ cmp.setup {
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
+
+vim.cmd([[au BufRead,BufNewFile * set sw=0]])
+vim.cmd([[au BufRead,BufNewFile * set ts=4]])
+vim.cmd([[au BufRead,BufNewFile */COMMIT_EDITMSG set cc=70]])
 
 vim.keymap.set('n', '<leader>who', [[:ToggleBlame virtual<CR>]])
 vim.keymap.set('n', '<leader>cl', [[:Bd other<CR>]])
