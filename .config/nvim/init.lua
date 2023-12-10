@@ -720,6 +720,9 @@ vim.keymap.set('n', '<leader>who', [[:ToggleBlame virtual<CR>]])
 vim.keymap.set('n', '<leader>cl', [[:Bd other<CR>]])
 vim.keymap.set('n', '<leader>col', [[:set cc=]], { desc = 'Color in [COL]umn at given number'} )
 
+vim.keymap.set('n', '<leader>run', [[:Lab code run<CR>]], { desc = '[RUN] lab code runner'} )
+vim.keymap.set('n', '<leader>stop', [[:Lab code stop<CR>]], { desc = '[STOP] lab code runner'} )
+
 vim.keymap.set('t', '<Esc>', [[<C-\><C-n>]])
 vim.keymap.set('n', '<leader>f', [[/]])
 vim.keymap.set('n', '<leader>q', [[@]])
