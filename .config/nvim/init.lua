@@ -713,6 +713,7 @@ cmp.setup {
 
 vim.cmd([[au BufRead,BufNewFile * set sw=0]])
 vim.cmd([[au BufRead,BufNewFile * set ts=4]])
+vim.cmd([[au BufRead,BufNewFile * set expandtab]])
 vim.cmd([[au BufRead,BufNewFile */COMMIT_EDITMSG set cc=70]])
 
 vim.keymap.set('n', '<leader>who', [[:ToggleBlame virtual<CR>]])
