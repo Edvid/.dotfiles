@@ -711,7 +711,7 @@ cmp.setup {
 -- vim: ts=2 sts=2 sw=2 et
 
 vim.cmd([[au BufRead,BufNewFile * set sw=0]])
-vim.cmd([[au BufRead,BufNewFile * set ts=4]])
+vim.cmd([[au BufRead,BufNewFile * set ts=2]])
 vim.cmd([[au BufRead,BufNewFile * set expandtab]])
 vim.cmd([[au BufRead,BufNewFile */COMMIT_EDITMSG set cc=70]])
 
