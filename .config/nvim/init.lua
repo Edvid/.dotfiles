@@ -140,6 +140,8 @@ require('lazy').setup({
        vim.cmd.colorscheme 'dracula'
        vim.api.nvim_set_hl(0, 'Normal', { bg = "NONE" })
        vim.api.nvim_set_hl(0, 'Cursor', { reverse = true })
+       vim.api.nvim_set_hl(0, 'CursorLineNr',{ fg = "#F1FA8C" })
+       vim.api.nvim_set_hl(0, 'CursorLine',{ bg = "NONE" })
        vim.api.nvim_set_hl(0, 'StatusLine',{ bg = "NONE" })
        vim.api.nvim_set_hl(0, 'StatusLineNC',{ bg = "NONE" })
        vim.api.nvim_set_hl(0, 'TabLine',{ bg = "NONE", fg = "#BD93F9" })
@@ -709,6 +711,8 @@ cmp.setup {
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
+
+vim.cmd([[set cursorline]])
 
 vim.cmd([[au BufRead,BufNewFile * set sw=0]])
 vim.cmd([[au BufRead,BufNewFile * set ts=2]])
