@@ -126,9 +126,13 @@ require('lazy').setup({
         changedelete = { text = '~' },
       },
       on_attach = function(bufnr)
-        vim.keymap.set('n', '<leader>gp', require('gitsigns').prev_hunk, { buffer = bufnr, desc = '[G]o to [P]revious Hunk' })
-        vim.keymap.set('n', '<leader>gn', require('gitsigns').next_hunk, { buffer = bufnr, desc = '[G]o to [N]ext Hunk' })
-        vim.keymap.set('n', '<leader>ph', require('gitsigns').preview_hunk, { buffer = bufnr, desc = '[P]review [H]unk' })
+        vim.keymap.set('n', '<leader>k', require('gitsigns').prev_hunk, { buffer = bufnr, desc = 'Go to previous Hunk' })
+        vim.keymap.set('n', '<leader>j', require('gitsigns').next_hunk, { buffer = bufnr, desc = 'Go to next Hunk' })
+        vim.keymap.set('n', '<leader>gs', require('gitsigns').stage_hunk, { buffer = bufnr, desc = '[G]it [S]tage hunk' })
+        vim.keymap.set('n', '<leader>ga', require('gitsigns').stage_buffer, { buffer = bufnr, desc = '[G]it stage [A]ll hunks in buffer' })
+        vim.keymap.set('n', '<leader>gu', require('gitsigns').undo_stage_hunk, { buffer = bufnr, desc = '[G]it [U]ndo hunk' })
+        vim.keymap.set('n', '<leader>gr', require('gitsigns').reset_hunk, { buffer = bufnr, desc = '[G]it [R]eset hunk' })
+        vim.keymap.set('n', '<leader>go', require('gitsigns').preview_hunk_inline, { buffer = bufnr, desc = '[G]it [O]pen preview of hunk' })
       end,
     },
   },
