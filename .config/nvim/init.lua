@@ -244,10 +244,6 @@ require('lazy').setup({
   -- require 'kickstart.plugins.debug',
 
   {
-    "FabijanZulj/blame.nvim"
-  },
-
-  {
     "Asheq/close-buffers.vim"
   },
 
@@ -724,7 +720,7 @@ vim.cmd([[au BufRead,BufNewFile * set ts=2]])
 vim.cmd([[au BufRead,BufNewFile * set expandtab]])
 vim.cmd([[au BufRead,BufNewFile */COMMIT_EDITMSG set cc=70]])
 
-vim.keymap.set('n', '<leader>who', [[:ToggleBlame virtual<CR>]])
+vim.keymap.set('n', '<leader>who', [[:G blame<CR>]])
 vim.keymap.set('n', '<leader>cl', [[:Bd other<CR>]])
 vim.keymap.set('n', '<leader>col', [[:set cc=]], { desc = 'Color in [COL]umn at given number'} )
 
