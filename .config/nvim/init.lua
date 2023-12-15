@@ -134,6 +134,7 @@ require('lazy').setup({
         vim.keymap.set('n', '<leader>gr', require('gitsigns').reset_hunk, { buffer = bufnr, desc = '[G]it [R]eset hunk' })
         vim.keymap.set('n', '<leader>go', require('gitsigns').preview_hunk_inline, { buffer = bufnr, desc = '[G]it [O]pen preview of hunk' })
         vim.keymap.set('n', '<leader>gc', [[:Git commit<CR>]], { buffer = bufnr, desc = '[G]it [C]ommit' })
+        vim.keymap.set('n', '<leader>gp', [[:Git push<CR>]], { buffer = bufnr, desc = '[G]it [P]ush' })
       end,
     },
   },
@@ -689,8 +690,6 @@ vim.keymap.set('n', '<leader>stop', [[:Lab code stop<CR>]], { desc = '[STOP] lab
 vim.keymap.set('t', '<Esc>', [[<C-\><C-n>]])
 vim.keymap.set('n', '<leader>f', [[/]])
 vim.keymap.set('n', '<leader>q', [[@]])
-
-vim.keymap.set({ 'n', 'v', 'o' }, '<leader>d', [[$]])
 
 vim.keymap.set('n', '<C-t>', [[<C-W>s<C-W>T]], { desc = 'Create new [T]ab'})
 vim.keymap.set('n', '<A-d>', [[<C-PageDown>]])
