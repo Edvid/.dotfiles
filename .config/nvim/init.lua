@@ -350,78 +350,28 @@ require('ibl').setup {
   indent = { char = "┆" },
 }
 
-local lualine_theme = require('lualine.themes.auto')
-local themecols = {
-   comment = "#6272A4",
-   yellow = "#F1FA8C",
-   purple = "#BD93F9",
-   terminal = "#50fa7b",
-   pink = "#FF79C6",
-   bright_red = "#FF6E6E",
-   white = "#ABB2BF",
-}
-lualine_theme.normal = {
-  a = { fg = themecols.white, bg = "NONE", gui = "bold" },
-  b = { fg = themecols.white, bg = "NONE" },
-  c = { bg = "NONE" },
-  x = { bg = "NONE" },
-  y = { fg = themecols.white, bg = "NONE" },
-  z = { fg = themecols.white, bg = "NONE" }
+-- local lualine_theme = require('lualine.themes.auto')
+local function lualine_segment_colors(col)
+  return {
+    a = { fg = col, bg = "NONE", gui = "bold" },
+    b = { fg = col, bg = "NONE" },
+    c = { bg = "NONE" },
+    x = { bg = "NONE" },
+    y = { fg = col, bg = "NONE" },
+    z = { fg = col, bg = "NONE" }
+  }
+end
+
+local lualine_theme = {
+  inactive = lualine_segment_colors("#6272A4"),
+  visual = lualine_segment_colors("#F1FA8C"),
+  insert = lualine_segment_colors("#BD93F9"),
+  terminal = lualine_segment_colors("#50fa7b"),
+  command = lualine_segment_colors("#FF79C6"),
+  replace = lualine_segment_colors("#FF6E6E"),
+  normal = lualine_segment_colors("#ABB2BF"),
 }
 
-lualine_theme.insert = {
-  a = { fg = themecols.purple, bg = "NONE", gui = "bold" },
-  b = { fg = themecols.purple, bg = "NONE" },
-  c = { bg = "NONE" },
-  x = { bg = "NONE" },
-  y = { fg = themecols.purple, bg = "NONE" },
-  z = { fg = themecols.purple, bg = "NONE" }
-}
-
-lualine_theme.visual = {
-  a = { fg = themecols.yellow, bg = "NONE", gui = "bold" },
-  b = { fg = themecols.yellow, bg = "NONE" },
-  c = { bg = "NONE" },
-  x = { bg = "NONE" },
-  y = { fg = themecols.yellow, bg = "NONE" },
-  z = { fg = themecols.yellow, bg = "NONE" }
-}
-
-lualine_theme.replace = {
-  a = { fg = themecols.bright_red, bg = "NONE", gui = "bold" },
-  b = { fg = themecols.bright_red, bg = "NONE" },
-  c = { bg = "NONE" },
-  x = { bg = "NONE" },
-  y = { fg = themecols.bright_red, bg = "NONE" },
-  z = { fg = themecols.bright_red, bg = "NONE" }
-}
-
-lualine_theme.command = {
-  a = { fg = themecols.pink, bg = "none", gui = "bold" },
-  b = { fg = themecols.pink, bg = "none" },
-  c = { bg = "none" },
-  x = { bg = "none" },
-  y = { fg = themecols.pink, bg = "none" },
-  z = { fg = themecols.pink, bg = "none" }
-}
-
-lualine_theme.inactive = {
-  a = { fg = themecols.comment, bg = "none", gui = "bold" },
-  b = { fg = themecols.comment, bg = "none" },
-  c = { bg = "none" },
-  x = { bg = "none" },
-  y = { fg = themecols.comment, bg = "none" },
-  z = { fg = themecols.comment, bg = "none" }
-}
-
-lualine_theme.terminal = {
-  a = { fg = themecols.terminal, bg = "none", gui = "bold" },
-  b = { fg = themecols.terminal, bg = "none" },
-  c = { bg = "none" },
-  x = { bg = "none" },
-  y = { fg = themecols.terminal, bg = "none" },
-  z = { fg = themecols.terminal, bg = "none" }
-}
 require('lualine').setup {
   options = {
     theme = lualine_theme
