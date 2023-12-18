@@ -196,7 +196,9 @@ require('lazy').setup({
   },
 
   -- "gc" to comment visual regions/lines
-  { 'numToStr/Comment.nvim', opts = {} },
+  { 'numToStr/Comment.nvim', opts = {
+      opleader = { line = '<leader>com', block = '<leader>bcom' },
+  } },
 
   -- Fuzzy Finder (files, lsp, etc)
   -- Remeber to install ripgrep in administer terminal `choco install ripgrep`
