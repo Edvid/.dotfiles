@@ -701,4 +701,4 @@ vim.keymap.set('n', '<A-q>', [[:bf<CR>:3bn<CR>]])
 vim.keymap.set('n', '<A-w>', [[:bf<CR>:4bn<CR>]])
 vim.keymap.set('n', '<A-e>', [[:bf<CR>:5bn<CR>]])
 vim.opt.listchars:append({trail = '•', eol = '↵', tab = '» '})
-vim.opt.list = true
+vim.keymap.set({'n', 'v', 'o', 'c'}, '<C-z>', '<Nop>')
