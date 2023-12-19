@@ -1,0 +1,6 @@
+[font]
+normal = { family = "CaskaydiaCove Nerd Font Mono" }
+size = 23
+[window]
+startup_mode = "Fullscreen"
+opacity = 0
