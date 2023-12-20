@@ -60,6 +60,71 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+local bgColor = "NONE"
+
+local tern = function (cond, t, f)
+  if cond then return t else return f end
+end
+local winSetHighlights = function(colorSet)
+  vim.api.nvim_set_hl(0, 'Normal', { bg = colorSet })
+  vim.api.nvim_set_hl(0, 'Cursor', { reverse = true })
+  vim.api.nvim_set_hl(0, 'CursorLineNr',{ fg = "#F1FA8C" })
+  vim.api.nvim_set_hl(0, 'CursorLine',{ bg = colorSet })
+  vim.api.nvim_set_hl(0, 'TabLine',{ bg = colorSet, fg = "#BD93F9" })
+  vim.api.nvim_set_hl(0, 'TabLineFill',{ bg = colorSet })
+  vim.api.nvim_set_hl(0, 'WinSeparator',{ bg = colorSet })
+end
+
+local setupLualine = function (colorSet)
+  local conditionalColors = {
+    interactive = "#6272A4",
+    visual = "#F1FA8C",
+    insert = "#BD93F9",
+    terminal = "#50fa7b",
+    command = tern(bgColor == "NONE", "#FF79C6", "#c85f8c"),
+    replace = "#FF6E6E",
+    normal = tern(bgColor == "NONE", "#ABB2BF", "#747983"),
+  }
+  local function lualine_segment_colors(col)
+    if bgColor == "NONE" then
+      return {
+        a = { fg = col, bg = colorSet, gui = "bold" },
+        b = { fg = col, bg = colorSet },
+        c = { bg = colorSet },
+        x = { bg = colorSet },
+        y = { fg = col, bg = colorSet },
+        z = { fg = col, bg = colorSet }
+      }
+    else
+      return {
+        a = { fg = "white", bg = col, gui = "bold" },
+        b = { fg = "white", bg = "#5f6a8e" },
+        c = { bg = "#2c2e39" },
+        x = { bg = "#2c2e39" },
+        y = { fg = "white", bg = "#5f6a8e" },
+        z = { fg = "white", bg = col }
+      }
+    end
+  end
+
+  local lualine_theme = {}
+
+  for k, v in pairs(conditionalColors) do
+    lualine_theme[k] = lualine_segment_colors(v)
+  end
+  require('lualine').setup {
+    options = {
+      theme = lualine_theme
+    }
+  }
+end
+
+local ToggleColor = function ()
+  if bgColor == "NONE" then bgColor = "#121826"
+  else bgColor = "NONE" end
+  winSetHighlights(bgColor)
+  setupLualine(bgColor)
+end
 -- NOTE: Here is where you install your plugins.
 --  You can configure plugins using the `config` key.
 --
@@ -142,17 +207,9 @@ require('lazy').setup({
   {
      'dracula/vim',
      priority = 1000,
-     config = function()
+     config = function ()
        vim.cmd.colorscheme 'dracula'
-       vim.api.nvim_set_hl(0, 'Normal', { bg = "NONE" })
-       vim.api.nvim_set_hl(0, 'Cursor', { reverse = true })
-       vim.api.nvim_set_hl(0, 'CursorLineNr',{ fg = "#F1FA8C" })
-       vim.api.nvim_set_hl(0, 'CursorLine',{ bg = "NONE" })
-       vim.api.nvim_set_hl(0, 'StatusLine',{ bg = "NONE" })
-       vim.api.nvim_set_hl(0, 'StatusLineNC',{ bg = "NONE" })
-       vim.api.nvim_set_hl(0, 'TabLine',{ bg = "NONE", fg = "#BD93F9" })
-       vim.api.nvim_set_hl(0, 'TabLineFill',{ bg = "NONE" })
-       vim.api.nvim_set_hl(0, 'WinSeparator',{ bg = "NONE" })
+       winSetHighlights(bgColor)
      end,
   },
 
@@ -354,32 +411,7 @@ require('ibl').setup {
 }
 
 -- local lualine_theme = require('lualine.themes.auto')
-local function lualine_segment_colors(col)
-  return {
-    a = { fg = col, bg = "NONE", gui = "bold" },
-    b = { fg = col, bg = "NONE" },
-    c = { bg = "NONE" },
-    x = { bg = "NONE" },
-    y = { fg = col, bg = "NONE" },
-    z = { fg = col, bg = "NONE" }
-  }
-end
-
-local lualine_theme = {
-  inactive = lualine_segment_colors("#6272A4"),
-  visual = lualine_segment_colors("#F1FA8C"),
-  insert = lualine_segment_colors("#BD93F9"),
-  terminal = lualine_segment_colors("#50fa7b"),
-  command = lualine_segment_colors("#FF79C6"),
-  replace = lualine_segment_colors("#FF6E6E"),
-  normal = lualine_segment_colors("#ABB2BF"),
-}
-
-require('lualine').setup {
-  options = {
-    theme = lualine_theme
-  }
-}
+setupLualine()
 
 require('lab').setup { }
 
@@ -680,6 +712,13 @@ vim.cmd([[au BufRead,BufNewFile * set sw=0]])
 vim.cmd([[au BufRead,BufNewFile * set ts=2]])
 vim.cmd([[au BufRead,BufNewFile * set expandtab]])
 vim.cmd([[au BufRead,BufNewFile */COMMIT_EDITMSG set cc=70]])
+
+ToggleColor()
+vim.api.nvim_create_user_command("ToggleTransparency", function()
+  ToggleColor()
+end, {})
+
+vim.keymap.set('n', '<A-s>', [[:ToggleTransparency<CR>]])
 
 vim.keymap.set('n', '<leader>who', [[:G blame<CR>]])
 vim.keymap.set('n', '<leader>cl', [[:Bd other<CR>]])
