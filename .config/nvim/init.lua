@@ -80,7 +80,7 @@ local setupLualine = function (colorSet)
     interactive = "#6272A4",
     visual = "#F1FA8C",
     insert = "#BD93F9",
-    terminal = "#50fa7b",
+    terminal = tern(bgColor == "NONE", "#50fa7b", "#2c8a48"),
     command = tern(bgColor == "NONE", "#FF79C6", "#c85f8c"),
     replace = "#FF6E6E",
     normal = tern(bgColor == "NONE", "#ABB2BF", "#747983"),
