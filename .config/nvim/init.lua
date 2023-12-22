@@ -73,6 +73,7 @@ local winSetHighlights = function(colorSet)
   vim.api.nvim_set_hl(0, 'TabLine',{ bg = colorSet, fg = "#BD93F9" })
   vim.api.nvim_set_hl(0, 'TabLineFill',{ bg = colorSet })
   vim.api.nvim_set_hl(0, 'WinSeparator',{ bg = colorSet })
+  vim.api.nvim_set_hl(0, 'Folded',{ fg = "#6272A4", bg = tern(bgColor == "NONE", "NONE", "#1f232f") })
 end
 
 local setupLualine = function (colorSet)
