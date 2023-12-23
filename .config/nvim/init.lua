@@ -710,6 +710,7 @@ vim.opt.showmode = false
 
 vim.cmd([[set cursorline]])
 
+vim.cmd([[au BufRead,BufNewFile * set list]])
 vim.cmd([[au BufRead,BufNewFile * set sw=0]])
 vim.cmd([[au BufRead,BufNewFile * set ts=2]])
 vim.cmd([[au BufRead,BufNewFile * set expandtab]])
@@ -764,8 +765,9 @@ vim.keymap.set('n', '<A-3>', [[:bf<CR>:2bn<CR>]])
 vim.keymap.set('n', '<A-q>', [[:bf<CR>:3bn<CR>]])
 vim.keymap.set('n', '<A-w>', [[:bf<CR>:4bn<CR>]])
 vim.keymap.set('n', '<A-e>', [[:bf<CR>:5bn<CR>]])
-vim.opt.listchars:append({trail = '•', eol = '↵', tab = '» '})
 vim.keymap.set({'n', 'v', 'o', 'c'}, '<C-z>', '<Nop>')
+vim.opt.list = true
+vim.opt.listchars:append({trail = '•', eol = '↵', tab = '» '})
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
