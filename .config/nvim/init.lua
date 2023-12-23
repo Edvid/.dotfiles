@@ -753,6 +753,9 @@ vim.keymap.set('n', '<C-j>', [[<C-w>j]])
 vim.keymap.set('n', '<C-k>', [[<C-w>k]])
 vim.keymap.set('n', '<C-l>', [[<C-w>l]])
 
+vim.keymap.set('n', '<A-j>', [[ddp:undojoin<CR>]])
+vim.keymap.set('n', '<A-k>', [[ddkP:undojoin<CR>]])
+
 vim.keymap.set('n', '<A-d>', [[:bn<CR>]])
 vim.keymap.set('n', '<A-a>', [[:bN<CR>]])
 vim.keymap.set('n', '<A-1>', [[:bf<CR>]])
