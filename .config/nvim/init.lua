@@ -710,7 +710,6 @@ vim.opt.showmode = false
 
 vim.cmd([[set cursorline]])
 
-vim.cmd([[au BufRead,BufNewFile * set list]])
 vim.cmd([[au BufRead,BufNewFile * set sw=0]])
 vim.cmd([[au BufRead,BufNewFile * set ts=2]])
 vim.cmd([[au BufRead,BufNewFile * set expandtab]])
