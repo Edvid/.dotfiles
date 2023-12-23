@@ -706,8 +706,7 @@ cmp.setup {
   },
 }
 
--- The line beneath this is called `modeline`. See `:help modeline`
--- vim: ts=2 sts=2 sw=2 et
+vim.opt.showmode = false
 
 vim.cmd([[set cursorline]])
 
@@ -744,3 +743,6 @@ vim.keymap.set('n', '<A-w>', [[:bf<CR>:4bn<CR>]])
 vim.keymap.set('n', '<A-e>', [[:bf<CR>:5bn<CR>]])
 vim.opt.listchars:append({trail = '•', eol = '↵', tab = '» '})
 vim.keymap.set({'n', 'v', 'o', 'c'}, '<C-z>', '<Nop>')
+
+-- The line beneath this is called `modeline`. See `:help modeline`
+-- vim: ts=2 sts=2 sw=2 et
