@@ -720,7 +720,22 @@ vim.api.nvim_create_user_command("ToggleTransparency", function()
   ToggleColor()
 end, {})
 
-vim.keymap.set('n', '<A-s>', [[:ToggleTransparency<CR>]])
+vim.keymap.set('n', '<leader>xx', [[:source ~/.config/nvim/init.lua<CR>]], { desc = 'source/E[X]ecute init'})
+vim.keymap.set('n', '<leader>xt', [[:source %<CR>]], { desc = 'source/E[X]ecute [T]his'})
+
+local fixedLines = false
+
+local function toggleFixedLines()
+  if fixedLines then
+    vim.opt.scrolloff = 0
+  else vim.opt.scrolloff = 9999
+  end
+  fixedLines = not fixedLines
+end
+
+vim.keymap.set('n', '<leader>l', toggleFixedLines, {desc = 'fixed [L]ines'})
+
+vim.keymap.set({'n', 'v', 'o', 'c'}, '<A-s>', [[:ToggleTransparency<CR>]])
 
 vim.keymap.set('n', '<leader>who', [[:G blame<CR>]])
 vim.keymap.set('n', '<leader>cl', [[:Bd other<CR>]])
