@@ -206,6 +206,10 @@ require('lazy').setup({
   },
 
   {
+    'brenoprata10/nvim-highlight-colors'
+  },
+
+  {
      'dracula/vim',
      priority = 1000,
      config = function ()
@@ -436,6 +440,8 @@ vim.keymap.set('n', '<leader>sr', function()
   vim.cmd([[%s/]] .. pattern .. [[/]] .. replacement .. [[/g]])
 end, { desc = '[S]earch & global [R]eplace' })
 vim.keymap.set('n', '<leader>slr', [[:s///g<Left><Left><Left>]], { desc = '[S]earch & this [L]line [R]eplace' })
+
+require('nvim-highlight-colors').turnOn()
 
 -- [[ Configure Treesitter ]]
 -- See `:help nvim-treesitter`
