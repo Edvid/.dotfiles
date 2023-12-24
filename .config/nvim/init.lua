@@ -79,7 +79,7 @@ end
 local setupLualine = function (colorSet)
   local conditionalColors = {
     interactive = "#6272A4",
-    visual = "#F1FA8C",
+    visual = tern(bgColor == "NONE", "#F1FA8C", "#D0B90E"),
     insert = "#BD93F9",
     terminal = tern(bgColor == "NONE", "#50fa7b", "#2c8a48"),
     command = tern(bgColor == "NONE", "#FF79C6", "#c85f8c"),
