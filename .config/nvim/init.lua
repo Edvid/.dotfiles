@@ -290,6 +290,18 @@ require('lazy').setup({
     end,
   },
   {
+    'windwp/nvim-ts-autotag',
+    ft = {
+      'javascript',
+      'javascriptreact',
+      'typescript',
+      'typescriptreact',
+    },
+    config= function ()
+      require('nvim-ts-autotag').setup()
+    end
+  },
+  {
     -- Highlight, edit, and navigate code
     'nvim-treesitter/nvim-treesitter',
     dependencies = {
@@ -620,8 +632,6 @@ local cmp = require 'cmp'
 local luasnip = require 'luasnip'
 require('luasnip.loaders.from_vscode').lazy_load()
 luasnip.config.setup {}
-luasnip.filetype_extend("javascriptreact", { "html" })
-luasnip.filetype_extend("typescriptreact", { "html" })
 
 -- choose your icon chars
 local icons = {
