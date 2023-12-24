@@ -734,6 +734,7 @@ local function toggleFixedLines()
 end
 
 vim.keymap.set('n', '<leader>l', toggleFixedLines, {desc = 'fixed [L]ines'})
+vim.keymap.set('n', '<leader>n', [[:edit %:p:h/]], {desc = [[edit/create [N]ew file here]]})
 
 vim.keymap.set({'n', 'v', 'o', 'c'}, '<A-s>', [[:ToggleTransparency<CR>]])
 
