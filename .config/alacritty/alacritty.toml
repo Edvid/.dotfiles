@@ -1,6 +1,23 @@
 [font]
-normal = { family = "CaskaydiaCove Nerd Font Mono" }
+# normal = { family = "CaskaydiaCove Nerd Font Mono" }
+# size = 23
+
+# normal = { family = "GeistMono Nerd Font Mono" }
+# size = 21.5
+
+# normal = { family = "Big Blue Term437 Nerd Font Mono" }
+# size = 24
+
+# normal = { family = "Meslo LGM Nerd Font Mono" }
+# size = 22
+
+# normal = { family = "Martian Mono Nerd Font Mono" }
+# size = 22
+
+normal = { family = "GoMonoNerdFont" }
 size = 23
+# size = 31
+
 [window]
 startup_mode = "Fullscreen"
 opacity = 0
