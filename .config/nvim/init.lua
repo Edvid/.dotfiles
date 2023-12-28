@@ -176,6 +176,17 @@ require('lazy').setup({
     },
   },
 
+  {
+    'rcarriga/nvim-dap-ui',
+    dependencies = {
+      'mfussenegger/nvim-dap',
+    },
+  },
+
+  {
+    'theHamsta/nvim-dap-virtual-text',
+  },
+
   -- Useful plugin to show you pending keybinds.
   { "folke/which-key.nvim", opts = {} },
 
@@ -527,6 +538,12 @@ vim.keymap.set('n', '<leader>dk', vim.diagnostic.goto_prev, { desc = 'Go to prev
 vim.keymap.set('n', '<leader>dj', vim.diagnostic.goto_next, { desc = 'Go to next diagnostic message' })
 vim.keymap.set('n', '<leader>do', vim.diagnostic.open_float, { desc = '[D]iagnostics [O]pen float' })
 vim.keymap.set('n', '<leader>dd', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
+
+-- Debugger keymaps
+require('dapui').setup()
+
+vim.keymap.set('n', '<leader>dt', require('dapui').toggle, { desc = '[D]ebugger [T]oggle' })
+vim.keymap.set('n', '<leader>db', [[:DapToggleBreakpoint<CR>]], { desc = '[D]ebugger toggle [B]reakpoint' })
 
 -- [[ Configure LSP ]]
 --  This function gets run when an LSP connects to a particular buffer.
