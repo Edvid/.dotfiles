@@ -336,14 +336,6 @@ require('lazy').setup({
     build = ':TSUpdate',
     compilers = { "clang" },
   },
-  {
-    'gorbit99/codewindow.nvim',
-    config = function()
-      local codewindow = require('codewindow')
-      codewindow.setup()
-      codewindow.apply_default_keybinds()
-    end,
-  },
 
   -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
   --       These are some example plugins that I've included in the kickstart repository.
