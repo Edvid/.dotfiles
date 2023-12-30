@@ -70,6 +70,7 @@ local tern = function (cond, t, f)
   if cond then return t else return f end
 end
 
+-- helper function for ToggleColor
 local winSetHighlights = function(colorSet)
   vim.api.nvim_set_hl(0, 'Normal', { bg = colorSet })
   vim.api.nvim_set_hl(0, 'Cursor', { reverse = true })
@@ -81,6 +82,7 @@ local winSetHighlights = function(colorSet)
   vim.api.nvim_set_hl(0, 'Folded',{ fg = grabColor('DraculaBoundary', 'fg'), bg = tern(bgColor == "NONE", "NONE", grabColor('DraculaBoundary', 'bg')) })
 end
 
+-- helper function for ToggleColor
 local setupLualine = function (colorSet)
   local conditionalColors = {
     interactive = { bg = grabColor('DraculaBgLight', 'bg') },
@@ -127,6 +129,7 @@ local setupLualine = function (colorSet)
   }
 end
 
+-- Toggles wether or not nvim has transparent background
 local ToggleColor = function ()
   if bgColor == "NONE" then bgColor = grabColor('DraculaBgDarker', 'bg')
   else bgColor = "NONE" end
@@ -183,6 +186,7 @@ require('lazy').setup({
     },
   },
 
+  -- Debugger plugin for neovim
   {
     'rcarriga/nvim-dap-ui',
     dependencies = {
@@ -190,6 +194,7 @@ require('lazy').setup({
     },
   },
 
+  -- shows little variable values inline in buffer as the debugger is running
   {
     'theHamsta/nvim-dap-virtual-text',
   },
@@ -223,10 +228,12 @@ require('lazy').setup({
     },
   },
 
+  -- gives background colors to strings like "#6C7C2D" or "color: darkcyan"
   {
     'brenoprata10/nvim-highlight-colors'
   },
 
+  -- setting the theme
   {
      'dracula/vim',
      priority = 1000,
@@ -307,6 +314,7 @@ require('lazy').setup({
       vim.keymap.set("n", "<leader>u", [[:Telescope undo<CR>]])
     end,
   },
+  -- tag completion for html tags or react components starting with <something
   {
     'windwp/nvim-ts-autotag',
     ft = {
@@ -343,11 +351,14 @@ require('lazy').setup({
   -- require 'kickstart.plugins.autoformat',
   -- require 'kickstart.plugins.debug',
 
+  -- plugin for reliably closing other buffers than current
   {
     "Asheq/close-buffers.vim"
   },
 
+  -- code runner for inline feedback for interpreted languages like js, python and lua
   {
+    -- '0x100101/lab.nvim' fork
     'Edvid/lab.nvim',
     build = 'cd js && npm ci',
     dependencies =  {
