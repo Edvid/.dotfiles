@@ -60,50 +60,57 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-local bgColor = "NONE"
+local function grabColor(name, at)
+  local tmp = vim.api.nvim_get_hl(0, {name = name})
+  return string.format('#%x', tmp[at])
+end
 
+local bgColor = "NONE"
 local tern = function (cond, t, f)
   if cond then return t else return f end
 end
+
 local winSetHighlights = function(colorSet)
   vim.api.nvim_set_hl(0, 'Normal', { bg = colorSet })
   vim.api.nvim_set_hl(0, 'Cursor', { reverse = true })
-  vim.api.nvim_set_hl(0, 'CursorLineNr',{ fg = "#F1FA8C" })
-  vim.api.nvim_set_hl(0, 'CursorLine',{ bg = colorSet })
-  vim.api.nvim_set_hl(0, 'TabLine',{ bg = colorSet, fg = "#BD93F9" })
+  vim.api.nvim_set_hl(0, 'CursorLineNr',{ fg = grabColor('DraculaYellow', 'fg')})
+  vim.api.nvim_set_hl(0, 'CursorLine',{ bg = tern(bgColor == "NONE", "NONE", grabColor('DraculaBoundary', 'bg')) })
+  vim.api.nvim_set_hl(0, 'TabLine',{ bg = colorSet, fg = grabColor('DraculaPurple', 'fg')})
   vim.api.nvim_set_hl(0, 'TabLineFill',{ bg = colorSet })
   vim.api.nvim_set_hl(0, 'WinSeparator',{ bg = colorSet })
-  vim.api.nvim_set_hl(0, 'Folded',{ fg = "#6272A4", bg = tern(bgColor == "NONE", "NONE", "#1f232f") })
+  vim.api.nvim_set_hl(0, 'Folded',{ fg = grabColor('DraculaBoundary', 'fg'), bg = tern(bgColor == "NONE", "NONE", grabColor('DraculaBoundary', 'bg')) })
 end
 
 local setupLualine = function (colorSet)
   local conditionalColors = {
-    interactive = "#6272A4",
-    visual = tern(bgColor == "NONE", "#F1FA8C", "#D0B90E"),
-    insert = "#BD93F9",
-    terminal = tern(bgColor == "NONE", "#50fa7b", "#2c8a48"),
-    command = tern(bgColor == "NONE", "#FF79C6", "#c85f8c"),
-    replace = "#FF6E6E",
-    normal = tern(bgColor == "NONE", "#ABB2BF", "#747983"),
+    interactive = { bg = grabColor('DraculaBgLight', 'bg') },
+    visual = { bg = grabColor('DraculaYellow', 'fg'), fg = grabColor('DraculaBgDarker', 'bg') },
+    insert = { bg = grabColor('DraculaPurple', 'fg') },
+    terminal = { bg = grabColor('DraculaGreen', 'fg'), fg = grabColor('DraculaBgDarker', 'bg') },
+    command = { bg = grabColor('DraculaPink', 'fg') },
+    replace = { bg = "#ad2424" },
+    normal = { bg = tern(bgColor == "NONE", 'white', grabColor('DraculaBgLight', 'bg')) },
   }
-  local function lualine_segment_colors(col)
+
+  local function lualine_segment_colors(cols)
+    local textCol = tern(cols.fg == nil, "white", cols.fg)
     if bgColor == "NONE" then
       return {
-        a = { fg = col, bg = colorSet, gui = "bold" },
-        b = { fg = col, bg = colorSet },
+        a = { fg = cols.bg, bg = colorSet, gui = "bold" },
+        b = { fg = cols.bg, bg = colorSet },
         c = { bg = colorSet },
         x = { bg = colorSet },
-        y = { fg = col, bg = colorSet },
-        z = { fg = col, bg = colorSet }
+        y = { fg = cols.bg, bg = colorSet },
+        z = { fg = cols.bg, bg = colorSet }
       }
     else
       return {
-        a = { fg = "white", bg = col, gui = "bold" },
-        b = { fg = "white", bg = "#5f6a8e" },
-        c = { bg = "#2c2e39" },
-        x = { bg = "#2c2e39" },
-        y = { fg = "white", bg = "#5f6a8e" },
-        z = { fg = "white", bg = col }
+        a = { fg = textCol, bg = cols.bg, gui = "bold" },
+        b = { fg = "white", bg = grabColor('DraculaBgLighter', 'bg') },
+        c = { bg = grabColor('DraculaBgDark', 'bg') },
+        x = { bg = grabColor('DraculaBgDark', 'bg') },
+        y = { fg = "white", bg = grabColor('DraculaBgLighter', 'bg') },
+        z = { fg = textCol, bg = cols.bg }
       }
     end
   end
@@ -121,7 +128,7 @@ local setupLualine = function (colorSet)
 end
 
 local ToggleColor = function ()
-  if bgColor == "NONE" then bgColor = "#121826"
+  if bgColor == "NONE" then bgColor = grabColor('DraculaBgDarker', 'bg')
   else bgColor = "NONE" end
   winSetHighlights(bgColor)
   setupLualine(bgColor)
@@ -749,6 +756,7 @@ vim.cmd([[au BufRead,BufNewFile * set sw=0]])
 vim.cmd([[au BufRead,BufNewFile * set ts=2]])
 vim.cmd([[au BufRead,BufNewFile * set expandtab]])
 vim.cmd([[au BufRead,BufNewFile */COMMIT_EDITMSG set cc=70]])
+
 
 ToggleColor()
 vim.api.nvim_create_user_command("ToggleTransparency", function()
