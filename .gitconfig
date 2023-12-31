@@ -1,16 +1,16 @@
 [init]
-	defaultBranch = main
+  defaultBranch = main
 [user]
-	email = spacemastr@gmail.com
-	name = Edvid
+  email = spacemastr@gmail.com
+  name = Edvid
 [alias]
-	graph = log --graph --all --abbrev-commit --decorate --pretty=tformat:'%C(bold 5)%h%C(reset)%C(auto)% D%C(221)% an%C(bold 75)% ar%C(reset)%C(auto)%n%C(2)󰍪 %C(251)%s%C(reset)'
-	gr = graph --max-count=10
+  graph = log --graph --all --abbrev-commit --decorate --pretty=tformat:'%C(bold 5)%h%C(reset)%C(auto)% D%C(221)% an%C(bold 75)% ar%C(reset)%C(auto)%n%C(2)󰍪 %C(251)%s%C(reset)'
+  gr = graph --max-count=10
 [core]
-	pager = cat
+  pager = cat
 [credential]
-	helper = store --file ~/.git.credentials
+  helper = store --file ~/.git.credentials
 [push]
-    autoSetupRemote = true
+  autoSetupRemote = true
 [pull]
-	rebase = false
+  rebase = false
