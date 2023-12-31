@@ -197,6 +197,16 @@ require('lazy').setup({
   -- shows little variable values inline in buffer as the debugger is running
   'theHamsta/nvim-dap-virtual-text',
 
+  -- vim commands in the middle of the screen
+  {
+    'VonHeikemen/fine-cmdline.nvim',
+    dependencies = {
+      'MunifTanjim/nui.nvim',
+    }
+  },
+  -- Ollama intregration into nvim
+  'David-Kunz/gen.nvim',
+
   -- Useful plugin to show you pending keybinds.
   "folke/which-key.nvim",
 
@@ -546,6 +556,31 @@ vim.keymap.set('n', '<leader>dd', vim.diagnostic.setloclist, { desc = 'Open diag
 -- Debugger keymaps
 require('dapui').setup()
 
+require('fine-cmdline').setup({
+  popup = {
+    position = {
+      row = '50%',
+    },
+    size = { width = '40%' },
+  }
+})
+
+-- keybind for fine-cmdline
+vim.api.nvim_set_keymap('n', '<CR>', '<cmd>FineCmdline<CR>', {noremap = true})
+
+
+require('gen').setup({
+  model = "mistral",
+  show_prompt = true,
+  show_model = true,
+  no_auto_close = false,
+  init = function(options) pcall(io.popen, "ollama serve > /dev/null 2>&1 &") end,
+  command = "curl --silent --no-buffer -X POST http://localhost:11434/api/generate -d $body",
+})
+
+-- gen.nvim keybind
+vim.keymap.set('n', '<leader>gen', [[:FineCmdline Gen <CR>]], {desc = [[edit/create [N]ew file here]]})
+
 vim.keymap.set('n', '<leader>dt', require('dapui').toggle, { desc = '[D]ebugger [T]oggle' })
 vim.keymap.set('n', '<leader>db', [[:DapToggleBreakpoint<CR>]], { desc = '[D]ebugger toggle [B]reakpoint' })
 
@@ -774,13 +809,13 @@ local function toggleFixedLines()
 end
 
 vim.keymap.set('n', '<leader>l', toggleFixedLines, {desc = 'fixed [L]ines'})
-vim.keymap.set('n', '<leader>n', [[:edit %:p:h/]], {desc = [[edit/create [N]ew file here]]})
+vim.keymap.set('n', '<leader>n', [[:FineCmdline edit %:p:h/<CR>]], {desc = [[edit/create [N]ew file here]]})
 
 vim.keymap.set({'n', 'i', 'v', 'o', 'c'}, '<A-s>', ToggleColor)
 
 vim.keymap.set('n', '<leader>who', [[:G blame<CR>]])
 vim.keymap.set('n', '<leader>cl', [[:Bd other<CR>]])
-vim.keymap.set('n', '<leader>col', [[:set cc=]], { desc = 'Color in [COL]umn at given number'} )
+vim.keymap.set('n', '<leader>col', [[:FineCmdline set cc=<CR>]], { desc = 'Color in [COL]umn at given number'} )
 
 vim.keymap.set('n', '<leader>run', [[:Lab code run<CR>]], { desc = '[RUN] lab code runner'} )
 vim.keymap.set('n', '<leader>stop', [[:Lab code stop<CR>]], { desc = '[STOP] lab code runner'} )
