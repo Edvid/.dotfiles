@@ -195,12 +195,10 @@ require('lazy').setup({
   },
 
   -- shows little variable values inline in buffer as the debugger is running
-  {
-    'theHamsta/nvim-dap-virtual-text',
-  },
+  'theHamsta/nvim-dap-virtual-text',
 
   -- Useful plugin to show you pending keybinds.
-  { "folke/which-key.nvim", opts = {} },
+  "folke/which-key.nvim",
 
   {
     -- Adds git related signs to the gutter, as well as utilities for managing changes
@@ -229,9 +227,7 @@ require('lazy').setup({
   },
 
   -- gives background colors to strings like "#6C7C2D" or "color: darkcyan"
-  {
-    'brenoprata10/nvim-highlight-colors'
-  },
+  'brenoprata10/nvim-highlight-colors',
 
   -- setting the theme
   {
@@ -344,9 +340,7 @@ require('lazy').setup({
   -- require 'kickstart.plugins.debug',
 
   -- plugin for reliably closing other buffers than current
-  {
-    "Asheq/close-buffers.vim"
-  },
+  "Asheq/close-buffers.vim",
 
   -- code runner for inline feedback for interpreted languages like js, python and lua
   {
