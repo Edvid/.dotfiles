@@ -571,6 +571,7 @@ vim.api.nvim_set_keymap('n', '<CR>', '<cmd>FineCmdline<CR>', {noremap = true})
 
 require('gen').setup({
   model = "mistral",
+  display_mode = "split",
   show_prompt = true,
   show_model = true,
   no_auto_close = false,
@@ -579,7 +580,8 @@ require('gen').setup({
 })
 
 -- gen.nvim keybind
-vim.keymap.set('n', '<leader>gen', [[:FineCmdline Gen <CR>]], {desc = [[edit/create [N]ew file here]]})
+vim.keymap.set({'n', 'v'}, '<leader>Gch', [[:Gen Chat<CR>]], {desc = [[using [Gen] [ch]at with AI]]})
+vim.keymap.set('v', '<leader>Gcc', [[:Gen Change_Code<CR>]], {desc = [[using [Gen], [C]hange [C]ode with AI]]})
 
 vim.keymap.set('n', '<leader>dt', require('dapui').toggle, { desc = '[D]ebugger [T]oggle' })
 vim.keymap.set('n', '<leader>db', [[:DapToggleBreakpoint<CR>]], { desc = '[D]ebugger toggle [B]reakpoint' })
