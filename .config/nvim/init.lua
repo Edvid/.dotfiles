@@ -694,31 +694,31 @@ luasnip.config.setup {}
 
 -- choose your icon chars
 local icons = {
-  Class = '',
-  Color = '',
-  Constant = '',
-  Constructor = '',
-  Enum = '',
-  EnumMember = '',
-  Event = '',
-  Field = '',
-  File = '',
-  Folder = '',
-  Function = "f⒳",
-  Interface = '',
-  Keyword = '',
-  Method = "",
-  Module = '',
-  Operator = '',
-  Property = '',
-  Reference = '',
-  Snippet = '',
-  Struct = '',
-  Text = '',
-  TypeParameter = '',
-  Unit = '',
-  Value = '',
-  Variable = '',
+  Class = '',
+  Color = '',
+  Constant = '',
+  Constructor = '',
+  Enum = '',
+  EnumMember = '',
+  Event = '',
+  Field = '',
+  File = '',
+  Folder = '󰉋',
+  Function = '󰡱',
+  Interface = '',
+  Keyword = '',
+  Method = "",
+  Module = 'mod',
+  Operator = '',
+  Property = '',
+  Reference = 'ref',
+  Snippet = '󰧛',
+  Struct = '󰘦',
+  Text = 'abc',
+  TypeParameter = '',
+  Unit = '󰑭',
+  Value = '',
+  Variable = '',
 }
 
 cmp.setup {
@@ -742,9 +742,9 @@ cmp.setup {
           return vim_item
         end
       end
-      vim_item.kind = icons[vim_item.kind] and (icons[vim_item.kind] .. vim_item.kind) or vim_item.kind
+      -- vim_item.kind = icons[vim_item.kind] and (icons[vim_item.kind] .. vim_item.kind) or vim_item.kind
       -- or just show the icon
-      -- vim_item.kind = icons[vim_item.kind] and icons[vim_item.kind] or vim_item.kind
+      vim_item.kind = icons[vim_item.kind] and icons[vim_item.kind] or vim_item.kind
       return vim_item
     end,
   },
