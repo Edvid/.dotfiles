@@ -151,6 +151,15 @@ require('lazy').setup({
   -- Detect tabstop and shiftwidth automatically
   'tpope/vim-sleuth',
 
+  -- database explorer like PGADmin, but native to NVIM
+  'tpope/vim-dadbod',
+
+  -- UI tool for dadbod
+  'kristijanhusak/vim-dadbod-ui',
+
+  -- completion tool for dadbod
+  'kristijanhusak/vim-dadbod-completion',
+
   -- NOTE: This is where your plugins related to LSP can be installed.
   --  The configuration is done below. Search for lspconfig to find it below.
   {
@@ -414,6 +423,10 @@ vim.o.completeopt = 'menuone,noselect'
 
 -- NOTE: You should make sure your terminal supports this
 vim.o.termguicolors = true
+
+-- nvim-cmp setup for sql stuff
+vim.cmd([[autocmd FileType sql,mysql,plsql lua require('cmp').setup.buffer({ sources = {{ name = 'vim-dadbod-completion' }} })]])
+
 
 -- [[ Basic Keymaps ]]
 
