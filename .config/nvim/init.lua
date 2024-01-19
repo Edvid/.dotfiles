@@ -226,8 +226,8 @@ require('lazy').setup({
     opts = {
       -- See `:help gitsigns.txt`
       signs = {
-        add = { text = '+' },
-        change = { text = '~' },
+        add = { text = '│' },
+        change = { text = '│' },
         delete = { text = '_' },
         topdelete = { text = '‾' },
         changedelete = { text = '~' },
@@ -814,6 +814,7 @@ end, {})
 vim.keymap.set('n', '<leader>xx', [[:source ~/.config/nvim/init.lua<CR>]], { desc = 'source/E[X]ecute init'})
 vim.keymap.set('n', '<leader>xt', [[:source %<CR>]], { desc = 'source/E[X]ecute [T]his'})
 
+-- Toggle between always having the cursor centered and not doing so
 local fixedLines = false
 
 local function toggleFixedLines()
@@ -825,7 +826,27 @@ local function toggleFixedLines()
 end
 
 vim.keymap.set('n', '<leader>l', toggleFixedLines, {desc = 'fixed [L]ines'})
+
+-- new file here and explore here keybinds
 vim.keymap.set('n', '<leader>n', [[:FineCmdline edit %:p:h/<CR>]], {desc = [[edit/create [N]ew file here]]})
+vim.keymap.set('n', '<leader>e', [[:Explore<CR>]], {desc = [[[E]xplore from here]]})
+
+-- better keybinds for netrw
+vim.api.nvim_create_autocmd('filetype', {
+  pattern = 'netrw',
+  desc = 'Better mappings for netrw',
+  callback = function()
+    local bind = function(lhs, rhs)
+      vim.keymap.set('n', lhs, rhs, {remap = true, buffer = true})
+    end 
+
+    -- edit new file
+    bind('n', '%')
+
+    -- rename file
+    bind('r', 'R')
+  end
+})
 
 vim.keymap.set({'n', 'i', 'v', 'o', 'c'}, '<A-s>', ToggleColor)
 
