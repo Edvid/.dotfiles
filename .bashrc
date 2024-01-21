@@ -5,7 +5,7 @@
 # If not running interactively, don't do anything
 [[ $- == *i* ]] && source ~/blesh/ble.sh --noattach
 [[ -s /home/space/.autojump/etc/profile.d/autojump.sh ]] && source /home/space/.autojump/etc/profile.d/autojump.sh
-alias v='nvim +term'
+alias v='nvim'
 
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
