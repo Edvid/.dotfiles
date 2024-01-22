@@ -12,11 +12,11 @@ alias grep='grep --color=auto'
 alias diff='diff --color=auto'
 timer() 
 {
-	xdg-open https://edvid.github.io/timer/?t=$1 &
+  xdg-open https://edvid.github.io/timer/?t=$1 >> /dev/null 2>&1
 }
 files ()
 {
-	nohup nautilus --browser $1 &>/dev/null
+  nohup nautilus --browser $1 >> /dev/null 2>&1 &
 }
 . "$HOME/.cargo/env"
 source /home/space/Documents/alacritty/extra/completions/alacritty.bash
