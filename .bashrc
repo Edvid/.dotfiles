@@ -23,3 +23,5 @@ source /home/space/Documents/alacritty/extra/completions/alacritty.bash
 eval "$(starship init bash)"
 
 [[ ${BLE_VERSION-} ]] && ble-attach
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
