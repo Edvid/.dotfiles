@@ -859,7 +859,7 @@ vim.api.nvim_create_autocmd('filetype', {
     end
 
     -- edit new file
-    bind('n', '%')
+    bind('<leader>n', '%')
 
     -- rename file
     bind('r', 'R')
