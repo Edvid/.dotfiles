@@ -146,7 +146,7 @@ local ToggleColor = function ()
   if bgColor == "NONE" then
 
     bgColor = solidBgColor()
-    lighterCol = string.format('#%x', tonumber(string.gsub(bgColor, '#', ''), 16) - tonumber("0x060606", 16))
+    lighterCol = string.format('#%06x', tonumber(string.gsub(bgColor, '#', ''), 16) - tonumber("0x060606", 16))
   else bgColor = "NONE" end
   winSetHighlights(bgColor, lighterCol)
   setupLualine(bgColor)
