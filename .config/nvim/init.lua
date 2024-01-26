@@ -71,24 +71,25 @@ local tern = function (cond, t, f)
 end
 
 -- helper function for ToggleColor
-local winSetHighlights = function(colorSet)
+local winSetHighlights = function(colorSet, accentBgColor)
   vim.api.nvim_set_hl(0, 'Normal', { bg = colorSet })
   vim.api.nvim_set_hl(0, 'Cursor', { reverse = true })
   vim.api.nvim_set_hl(0, 'CursorLineNr',{ fg = grabColor('DraculaYellow', 'fg')})
-  vim.api.nvim_set_hl(0, 'CursorLine',{ bg = tern(bgColor == "NONE", "NONE", grabColor('DraculaBoundary', 'bg')) })
+  vim.api.nvim_set_hl(0, 'CursorLine',{ bg = tern(bgColor == "NONE", "NONE", accentBgColor) })
+  vim.api.nvim_set_hl(0, 'ColorColumn',{ bg = tern(bgColor == "NONE", "NONE", accentBgColor) })
   vim.api.nvim_set_hl(0, 'TabLine',{ bg = colorSet, fg = grabColor('DraculaPurple', 'fg')})
   vim.api.nvim_set_hl(0, 'TabLineFill',{ bg = colorSet })
   vim.api.nvim_set_hl(0, 'WinSeparator',{ bg = colorSet })
-  vim.api.nvim_set_hl(0, 'Folded',{ fg = grabColor('DraculaBoundary', 'fg'), bg = tern(bgColor == "NONE", "NONE", grabColor('DraculaBoundary', 'bg')) })
+  vim.api.nvim_set_hl(0, 'Folded',{ fg = grabColor('DraculaBoundary', 'fg'), bg = tern(bgColor == "NONE", "NONE", accentBgColor) })
 end
 
 -- helper function for ToggleColor
 local setupLualine = function (colorSet)
   local conditionalColors = {
     interactive = { bg = grabColor('DraculaBgLight', 'bg') },
-    visual = { bg = grabColor('DraculaYellow', 'fg'), fg = grabColor('DraculaBgDarker', 'bg') },
+    visual = { bg = grabColor('DraculaYellow', 'fg'), fg = colorSet },
     insert = { bg = grabColor('DraculaPurple', 'fg') },
-    terminal = { bg = grabColor('DraculaGreen', 'fg'), fg = grabColor('DraculaBgDarker', 'bg') },
+    terminal = { bg = grabColor('DraculaGreen', 'fg'), fg = colorSet },
     command = { bg = grabColor('DraculaPink', 'fg') },
     replace = { bg = "#ad2424" },
     normal = { bg = tern(bgColor == "NONE", 'white', grabColor('DraculaBgLight', 'bg')) },
@@ -129,11 +130,25 @@ local setupLualine = function (colorSet)
   }
 end
 
+local _solidBgColor = nil
+local solidBgColor = function ()
+  if _solidBgColor == nil then
+    local ok, mod = pcall(require, 'vimbgcol')
+    if not ok then _solidBgColor = grabColor('draculabgdarker', 'bg')
+    else _solidBgColor = mod end
+  end
+
+  return _solidBgColor
+end
 -- Toggles wether or not nvim has transparent background
 local ToggleColor = function ()
-  if bgColor == "NONE" then bgColor = grabColor('DraculaBgDarker', 'bg')
+  local lighterCol = "NONE"
+  if bgColor == "NONE" then
+
+    bgColor = solidBgColor()
+    lighterCol = string.format('#%x', tonumber(string.gsub(bgColor, '#', ''), 16) - tonumber("0x060606", 16))
   else bgColor = "NONE" end
-  winSetHighlights(bgColor)
+  winSetHighlights(bgColor, lighterCol)
   setupLualine(bgColor)
 end
 -- NOTE: Here is where you install your plugins.
