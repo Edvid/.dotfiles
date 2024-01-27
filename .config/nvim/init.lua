@@ -865,6 +865,9 @@ end
 
 vim.keymap.set('n', '<leader>l', toggleFixedLines, {desc = 'fixed [L]ines'})
 
+-- paste without destroying what you have in register
+vim.keymap.set('v', '<leader>p', [["_dP]], {noremap = true, desc = [[[P]aste without loosing clipboard]]})
+
 -- new file here and explore here keybinds
 vim.keymap.set('n', '<leader>n', [[:FineCmdline edit %:p:h/<CR>]], {desc = [[edit/create [N]ew file here]]})
 vim.keymap.set('n', '<leader>e', [[:Explore<CR>]], {desc = [[[E]xplore from here]]})
