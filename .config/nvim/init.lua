@@ -524,12 +524,8 @@ vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string, { de
 vim.keymap.set('n', '<leader>sc', require('telescope.builtin').live_grep, { desc = '[S]earch [C]ontents' })
 vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
 vim.keymap.set('n', '<leader>sx', require('telescope.builtin').commands, { desc = '[S]earch commands/e[X]ecutables' })
-vim.keymap.set('n', '<leader>sr', function()
-  local pattern = vim.fn.input "Pattern: "
-  local replacement = vim.fn.input "Replacement: "
-  vim.cmd([[%s/]] .. pattern .. [[/]] .. replacement .. [[/g]])
-end, { desc = '[S]earch & global [R]eplace' })
-vim.keymap.set('n', '<leader>slr', [[:s///g<Left><Left><Left>]], { desc = '[S]earch & this [L]line [R]eplace' })
+vim.keymap.set('n', '<leader>sr' , [[:%s///g<Left><Left><Left>]], { desc = '[S]earch & global [R]eplace' })
+vim.keymap.set('v', '<leader>sr', [[:s///g<Left><Left><Left>]], { desc = '[S]earch & this [L]line [R]eplace' })
 
 require('nvim-highlight-colors').turnOn()
 
