@@ -614,7 +614,7 @@ require('fine-cmdline').setup({
 })
 
 -- keybind for fine-cmdline
-vim.api.nvim_set_keymap('n', '<CR>', '<cmd>FineCmdline<CR>', {noremap = true})
+vim.api.nvim_set_keymap('n', 'æ', '<cmd>FineCmdline<CR>', {noremap = true})
 
 
 require('gen').setup({
