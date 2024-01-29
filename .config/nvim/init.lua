@@ -918,10 +918,7 @@ vim.keymap.set('t', '<Esc>', [[<C-\><C-n>]])
 vim.keymap.set('n', '<leader>f', [[/]])
 vim.keymap.set('n', '<leader>q', [[@]])
 
--- vim.keymap.set('n', '<C-h>', [[<C-w>h]])
--- vim.keymap.set('n', '<C-j>', [[<C-w>j]])
--- vim.keymap.set('n', '<C-k>', [[<C-w>k]])
--- vim.keymap.set('n', '<C-l>', [[<C-w>l]])
+vim.keymap.set('n', 'gp', '`[v`]', { desc = "Reselect last pasted"})
 
 vim.keymap.set('n', '<A-j>', [[ddp:undojoin<CR>]])
 vim.keymap.set('n', '<A-k>', [[ddkP:undojoin<CR>]])
