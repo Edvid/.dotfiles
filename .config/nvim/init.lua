@@ -732,6 +732,24 @@ mason_lspconfig.setup_handlers {
   end
 }
 
+-- Mason doesn't work well with gdscript, so we will setup manually
+local dap = require('dap')
+dap.adapters.godot = {
+  type = 'server',
+  host = '192.0.0.1',
+  port = 6007,
+}
+dap.configurations.gdscript = {
+  {
+    type = 'godot',
+    request = 'launch',
+    name = 'Launch scene',
+    project = '${workspaceFolder}',
+    launch_scene = true,
+  }
+}
+require('lspconfig').gdscript.setup{}
+
 -- [[ Configure nvim-cmp ]]
 -- See `:help cmp`
 local cmp = require 'cmp'
