@@ -180,6 +180,9 @@ require('lazy').setup({
   -- completion tool for dadbod
   'kristijanhusak/vim-dadbod-completion',
 
+  -- Vim be good game. Practise getting good at the basic vim movements
+  'ThePrimeagen/vim-be-good',
+
   -- vim tmux window move intregration
   {
     "christoomey/vim-tmux-navigator",
