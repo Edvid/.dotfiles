@@ -432,7 +432,11 @@ require('lazy').setup({
 -- NOTE: You can change these options as you wish!
 
 -- Set highlight on search
-vim.o.hlsearch = false
+vim.o.hlsearch = true
+
+vim.keymap.set('n', '<leader>h', function ()
+  vim.o.hlsearch = not vim.o.hlsearch
+end, { silent = true })
 
 -- Make line numbers default
 vim.wo.number = true
