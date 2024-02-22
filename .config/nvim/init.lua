@@ -444,6 +444,9 @@ vim.wo.number = true
 -- Make line numbers relative
 vim.wo.relativenumber = true
 
+-- Make line numbers relative
+vim.wo.scrolloff = 6
+
 -- Enable mouse mode
 vim.o.mouse = 'a'
 
