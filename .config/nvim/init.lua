@@ -394,6 +394,7 @@ require('lazy').setup({
     'nvim-treesitter/nvim-treesitter',
     dependencies = {
       'nvim-treesitter/nvim-treesitter-textobjects',
+      'nvim-treesitter/nvim-treesitter-context',
     },
     build = ':TSUpdate',
     compilers = { "clang" },
@@ -674,6 +675,9 @@ vim.defer_fn(function()
         --   ['<leader>A'] = '@parameter.inner',
         -- },
       },
+    },
+    context = {
+      min_window_height = 3
     },
   }
 end, 0)
@@ -1021,6 +1025,10 @@ vim.api.nvim_create_autocmd('filetype', {
 })
 
 vim.keymap.set({'n', 'i', 'v', 'o', 'c'}, '<A-s>', ToggleColor)
+
+vim.api.nvim_set_hl(0, "TreesitterContextBottom", {underline=true})
+vim.api.nvim_set_hl(0, "TreesitterContextLineNumber", {fg=[[#df5858]]})
+vim.api.nvim_set_hl(0, "TreesitterContextLineNumberBottom", {underline=false})
 
 vim.keymap.set('n', '<leader>who', [[:G blame<CR>]])
 vim.keymap.set('n', '<leader>cl', [[:Bd other<CR>]])
