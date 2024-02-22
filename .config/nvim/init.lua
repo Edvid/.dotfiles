@@ -74,6 +74,7 @@ end
 -- helper function for ToggleColor
 local winSetHighlights = function(colorSet, accentBgColor)
   vim.api.nvim_set_hl(0, 'Normal', { bg = colorSet })
+  vim.api.nvim_set_hl(0, 'NormalFloat', { bg = colorSet })
   vim.api.nvim_set_hl(0, 'Cursor', { reverse = true })
   vim.api.nvim_set_hl(0, 'CursorLineNr',{ fg = grabColor('DraculaYellow', 'fg')})
   vim.api.nvim_set_hl(0, 'CursorLine',{ bg = tern(bgColor == "NONE", "NONE", accentBgColor) })
