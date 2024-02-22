@@ -1028,10 +1028,13 @@ vim.keymap.set('x', '<leader>q', [[@]])
 
 vim.keymap.set('n', 'gp', '`[v`]', { desc = "Reselect last pasted"})
 
-vim.keymap.set({ 'n' }, '<A-j>', [[:m +1<CR>==]])
-vim.keymap.set({ 'n' }, '<A-k>', [[:m -2<CR>==]])
-vim.keymap.set({ 'v' }, '<A-k>', [[:m '<-2<CR>gv=gv]])
-vim.keymap.set({ 'v' }, '<A-j>', [[:m '>+1<CR>gv=gv]])
+vim.keymap.set('n', 'J', [[mzJ`z]])
+
+vim.keymap.set('n', '<A-j>', [[:m +1<CR>==]])
+vim.keymap.set('n', '<A-k>', [[:m -2<CR>==]])
+vim.keymap.set('v', '<A-k>', [[:m '<-2<CR>gv=gv]])
+vim.keymap.set('v', '<A-j>', [[:m '>+1<CR>gv=gv]])
+
 
 vim.keymap.set('n', '<A-d>', [[:bn<CR>]])
 vim.keymap.set('n', '<A-a>', [[:bN<CR>]])
