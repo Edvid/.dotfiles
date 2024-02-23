@@ -1026,9 +1026,7 @@ vim.api.nvim_create_autocmd('filetype', {
 
 vim.keymap.set({'n', 'i', 'v', 'o', 'c'}, '<A-s>', ToggleColor)
 
-vim.api.nvim_set_hl(0, "TreesitterContextBottom", {underline=true})
-vim.api.nvim_set_hl(0, "TreesitterContextLineNumber", {fg=[[#df5858]]})
-vim.api.nvim_set_hl(0, "TreesitterContextLineNumberBottom", {underline=false})
+vim.api.nvim_set_hl(0, "TreesitterContextLineNumber", {fg=[[#9CB8FF]]})
 
 vim.keymap.set('n', '<leader>who', [[:G blame<CR>]])
 vim.keymap.set('n', '<leader>cl', [[:Bd other<CR>]])
