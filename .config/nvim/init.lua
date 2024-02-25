@@ -457,7 +457,7 @@ vim.wo.number = true
 -- Make line numbers relative
 vim.wo.relativenumber = true
 
--- Make line numbers relative
+-- Make cursor away from very top and very bottom of screen
 vim.wo.scrolloff = 6
 
 -- Enable mouse mode
