@@ -288,16 +288,33 @@ require('lazy').setup({
         changedelete = { text = '~' },
       },
       on_attach = function(bufnr)
-        vim.keymap.set('n', '<leader>k', require('gitsigns').prev_hunk, { buffer = bufnr, desc = 'Go to previous Hunk' })
-        vim.keymap.set('n', '<leader>j', require('gitsigns').next_hunk, { buffer = bufnr, desc = 'Go to next Hunk' })
-        vim.keymap.set('n', '<leader>ga', require('gitsigns').stage_hunk, { buffer = bufnr, desc = '[G]it [A]dd/stage hunk' })
-        vim.keymap.set('n', '<leader>gA', require('gitsigns').stage_buffer, { buffer = bufnr, desc = '[G]it add [A]ll hunks in buffer' })
-        vim.keymap.set('n', '<leader>gu', require('gitsigns').undo_stage_hunk, { buffer = bufnr, desc = '[G]it [U]ndo hunk' })
-        vim.keymap.set('n', '<leader>gr', require('gitsigns').reset_hunk, { buffer = bufnr, desc = '[G]it [R]eset hunk' })
-        vim.keymap.set('n', '<leader>gt', require('gitsigns').toggle_current_line_blame, { buffer = bufnr, desc = '[G]it [R]eset hunk' })
-        vim.keymap.set('n', '<leader>go', require('gitsigns').preview_hunk_inline, { buffer = bufnr, desc = '[G]it [O]pen preview of hunk' })
-        vim.keymap.set('n', '<leader>gc', [[:Git commit<CR>]], { buffer = bufnr, desc = '[G]it [C]ommit' })
-        vim.keymap.set('n', '<leader>gp', [[:Git push<CR>]], { buffer = bufnr, desc = '[G]it [P]ush' })
+        local gs = package.loaded.gitsigns
+
+        local function map(mode, l, r, opts)
+          opts = opts or {}
+          opts.buffer = bufnr
+          vim.keymap.set(mode, l, r, opts)
+        end
+        -- Actions
+        -- visual mode
+        map('v', '<leader>ga', function()
+          gs.stage_hunk { vim.fn.line '.', vim.fn.line 'v' }
+        end, { desc = '[G]it [A]dd/stage hunk' })
+        map('v', '<leader>gr', function()
+          gs.reset_hunk { vim.fn.line '.', vim.fn.line 'v' }
+        end, { desc = '[G]it [R]eset hunk' })
+        -- normal mode
+        map('n', '<leader>k', gs.prev_hunk, { buffer = bufnr, desc = 'Go to previous Hunk' })
+        map('n', '<leader>j', gs.next_hunk, { buffer = bufnr, desc = 'Go to next Hunk' })
+        map('n', '<leader>ga', gs.stage_hunk, { buffer = bufnr, desc = '[G]it [A]dd/stage hunk' })
+        map('n', '<leader>gA', gs.stage_buffer, { buffer = bufnr, desc = '[G]it add [A]ll hunks in buffer' })
+        map('n', '<leader>gu', gs.undo_stage_hunk, { buffer = bufnr, desc = '[G]it [U]ndo hunk' })
+        map('n', '<leader>gr', gs.reset_hunk, { buffer = bufnr, desc = '[G]it [R]eset hunk' })
+        map('n', '<leader>go', gs.preview_hunk_inline, { buffer = bufnr, desc = '[G]it [O]pen preview of hunk' })
+        map('n', '<leader>gc', [[:Git commit<CR>]], { buffer = bufnr, desc = '[G]it [C]ommit' })
+        map('n', '<leader>gp', [[:Git push<CR>]], { buffer = bufnr, desc = '[G]it [P]ush' })
+        -- Toggles
+        map('n', '<leader>gt', gs.toggle_current_line_blame, { buffer = bufnr, desc = '[G]it [T]oggle line blame' })
       end,
     },
   },
