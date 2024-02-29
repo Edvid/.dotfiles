@@ -12,6 +12,10 @@ alias ll='ls -Ahlt --color=auto'
 alias grep='grep --color=auto'
 alias diff='diff --color=auto'
 alias gg='git graph --color=always | head -n20'
+
+HISTSIZE=2000
+HISTFILESIZE=10000
+
 timer() 
 {
   xdg-open https://edvid.github.io/timer/?t=$1 >> /dev/null 2>&1
