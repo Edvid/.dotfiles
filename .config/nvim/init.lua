@@ -72,13 +72,14 @@ local tern = function (cond, t, f)
 end
 
 -- helper function for ToggleColor
-local winSetHighlights = function(colorSet, accentBgColor)
+local winSetHighlights = function(colorSet, accentBgColor, highlightColor)
   vim.api.nvim_set_hl(0, 'Normal', { bg = colorSet })
   vim.api.nvim_set_hl(0, 'NormalFloat', { bg = colorSet })
   vim.api.nvim_set_hl(0, 'Cursor', { reverse = true })
   vim.api.nvim_set_hl(0, 'CursorLineNr',{ fg = grabColor('DraculaYellow', 'fg')})
   vim.api.nvim_set_hl(0, 'CursorLine',{ bg = tern(bgColor == "NONE", "NONE", accentBgColor) })
   vim.api.nvim_set_hl(0, 'ColorColumn',{ bg = tern(bgColor == "NONE", "NONE", accentBgColor) })
+  vim.api.nvim_set_hl(0, 'Search',{ bg = tern(bgColor == "NONE", "NONE", highlightColor) })
   vim.api.nvim_set_hl(0, 'TabLine',{ bg = colorSet, fg = grabColor('DraculaPurple', 'fg')})
   vim.api.nvim_set_hl(0, 'TabLineFill',{ bg = colorSet })
   vim.api.nvim_set_hl(0, 'WinSeparator',{ bg = colorSet })
@@ -144,18 +145,30 @@ local solidBgColor = function ()
 end
 -- Toggles wether or not nvim has transparent background
 local ToggleColor = function ()
-  local lighterCol = "NONE"
+  local accentCol = "NONE"
+  local highlightCol = "NONE"
   if bgColor == "NONE" then
 
     bgColor = solidBgColor()
     local _, _, r, g, b = string.find(bgColor, '^#(%x%x)(%x%x)(%x%x)')
     r, g, b =
-      math.floor(tonumber(r, 16) * 0.75),
-      math.floor(tonumber(g, 16) * 0.75),
-      math.floor(tonumber(b, 16) * 0.75)
-    lighterCol = [[#]] .. string.format('%02x', r) .. string.format('%02x', g) .. string.format('%02x', b)
+      math.floor(tonumber(r, 16)),
+      math.floor(tonumber(g, 16)),
+      math.floor(tonumber(b, 16))
+
+    accentCol =
+    [[#]] ..
+    string.format('%02x', math.floor(r * 0.75)) ..
+    string.format('%02x', math.floor(g * 0.75)) ..
+    string.format('%02x', math.floor(b * 0.75))
+
+    highlightCol =
+    [[#]] ..
+    string.format('%02x', math.floor(255 * 0.25 + (r * 0.75))) ..
+    string.format('%02x', math.floor(255 * 0.25 + (g * 0.75))) ..
+    string.format('%02x', math.floor(255 * 0.25 + (b * 0.75)))
   else bgColor = "NONE" end
-  winSetHighlights(bgColor, lighterCol)
+  winSetHighlights(bgColor, accentCol, highlightCol)
   setupLualine(bgColor)
 end
 -- [[ Configure plugins ]]
