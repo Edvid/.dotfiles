@@ -647,7 +647,7 @@ vim.defer_fn(function()
     -- Install languages synchronously (only applied to `ensure_installed`)
     sync_install = false,
     -- List of parsers to ignore installing
-    ignore_install = {},
+    ignore_install = { "gitcommit" },
     -- You can specify additional Treesitter modules here: -- For example: -- playground = {--enable = true,-- },
     modules = {},
     highlight = { enable = true },
