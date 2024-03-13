@@ -12,6 +12,7 @@ alias ll='ls -Ahlt --color=auto'
 alias grep='grep --color=auto'
 alias diff='diff --color=auto'
 alias gg='git graph --color=always | head -n20'
+alias ggv='git graphverbose --color=always'
 
 HISTSIZE=2000
 HISTFILESIZE=10000
