@@ -1041,13 +1041,13 @@ require('lazy').setup({
     compilers = { "clang" },
     opts = {
       -- Add languages to be installed here that you want installed for treesitter
-      ensure_installed = { 'bash', 'c', 'html', 'lua', 'markdown', 'vim', 'vimdoc',  'cpp', 'c_sharp', 'go', 'python', 'rust', 'tsx', 'javascript', 'typescript'},
+      ensure_installed = { 'bash', 'c', 'html', 'lua', 'vim', 'vimdoc',  'cpp', 'c_sharp', 'go', 'python', 'rust', 'tsx', 'javascript', 'typescript'},
       -- Autoinstall languages that are not installed
       auto_install = true,
       -- Install languages synchronously (only applied to `ensure_installed`)
       sync_install = false,
       -- List of parsers to ignore installing
-      ignore_install = { "gitcommit" },
+      ignore_install = { "gitcommit", "markdown" },
       -- You can specify additional Treesitter modules here: -- For example: -- playground = {--enable = true,-- },
       modules = {},
       highlight = {
