@@ -4,8 +4,9 @@
   email = spacemastr@gmail.com
   name = Edvid
 [alias]
+  graph-default = log --graph --abbrev-commit --decorate --pretty=tformat:'%C(bold 213)%h%C(reset)%C(auto)% D%C(221)% an%C(bold 75)% ar%n%C(251)%s%C(reset)'
   graph = log --graph --all --abbrev-commit --decorate --pretty=tformat:'%C(bold 213)%h%C(reset)%C(auto)% D%C(221)% an%C(bold 75)% ar%n%C(251)%s%C(reset)'
-  graphverbose = log --graph --all --abbrev-commit --decorate --stat --pretty=tformat:'%C(bold 213)%h%C(reset)%C(auto)% D%C(221)% an%C(bold 75)% ar%n%C(104)%B%C(reset)'
+  graphverbose-default = log --graph --abbrev-commit --decorate --stat --pretty=tformat:'%C(bold 213)%h%C(reset)%C(auto)% D%C(221)% an%C(bold 75)% ar%n%C(104)%B%C(reset)'
 [core]
   pager = less
 	editor = nvim
