@@ -458,6 +458,10 @@ require('lazy').setup({
   'tpope/vim-fugitive',
   'tpope/vim-rhubarb',
 
+  { -- git worktree convenient plguin
+    'ThePrimeagen/git-worktree.nvim'
+  },
+
   { -- Useful plugin to show you pending keybinds.
     'folke/which-key.nvim',
     event = 'VimEnter', -- Sets the loading event to 'VimEnter'
@@ -549,6 +553,7 @@ require('lazy').setup({
       -- Enable Telescope extensions if they are installed
       pcall(require('telescope').load_extension, 'fzf')
       pcall(require('telescope').load_extension, 'ui-select')
+      pcall(require("telescope").load_extension, 'git_worktree')
 
       -- See `:help telescope.builtin`
       local builtin = require 'telescope.builtin'
@@ -1267,7 +1272,11 @@ require('fine-cmdline').setup({
 vim.api.nvim_set_keymap('n', 'æ', '<cmd>FineCmdline<CR>', { noremap = true })
 vim.api.nvim_set_keymap('v', 'æ', '<cmd>FineCmdline\'<,\'><CR>', { noremap = true })
 
-
+require("git-worktree").setup({
+  clearjumps_on_change = false -- default: true
+})
+vim.keymap.set('n', '<leader>wt<leader>', require('telescope').extensions.git_worktree.git_worktrees, { desc = '[W]ork [T]ree list all' })
+vim.keymap.set('n', '<leader>wtc', require('telescope').extensions.git_worktree.create_git_worktree, { desc = '[W]ork [T]ree [C]reate' })
 
 require('gen').setup({
   model = "mistral",
