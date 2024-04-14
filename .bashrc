@@ -13,8 +13,8 @@ alias grep='grep --color=auto'
 alias diff='diff --color=auto'
 alias privateggv='git graphverbose-default --color=always'
 
-HISTSIZE=2000
-HISTFILESIZE=10000
+HISTSIZE=20000
+HISTFILESIZE=20000
 
 privategg () {
   git graph-default --color=always $1 $2 $3 $4 | head -n20
