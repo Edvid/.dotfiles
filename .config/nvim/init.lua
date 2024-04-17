@@ -746,7 +746,7 @@ require('lazy').setup({
 
           -- Opens a popup that displays documentation about the word under your cursor
           --  See `:help K` for why this keymap.
-          map('K', vim.lsp.buf.hover, 'Hover Documentation')
+          map('<leader>I', vim.lsp.buf.hover, 'Hover Documentation')
 
           -- WARN: This is not Goto Definition, this is Goto Declaration.
           --  For example, in C this would take you to the header.
@@ -1314,7 +1314,7 @@ local on_attach = function(_, bufnr)
 
 
   -- See `:help K` for why this keymap
-  nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
+  nmap('<leader>I', vim.lsp.buf.hover, 'Hover Documentation')
   nmap('<leader>K', vim.lsp.buf.signature_help, 'Signature Documentation')
 
   -- Lesser used LSP functionality
@@ -1427,10 +1427,10 @@ vim.keymap.set('n', 'gp', '`[v`]', { desc = "Reselect last pasted" })
 
 vim.keymap.set('n', 'J', [[mzJ`z]])
 
-vim.keymap.set('n', '<A-j>', [[:m +1<CR>==]])
-vim.keymap.set('n', '<A-k>', [[:m -2<CR>==]])
-vim.keymap.set('v', '<A-k>', [[:m '<-2<CR>gv=gv]])
-vim.keymap.set('v', '<A-j>', [[:m '>+1<CR>gv=gv]])
+vim.keymap.set('n', 'J', [[:m +1<CR>==]])
+vim.keymap.set('n', 'K', [[:m -2<CR>==]])
+vim.keymap.set('v', 'K', [[:m '<-2<CR>gv=gv]])
+vim.keymap.set('v', 'J', [[:m '>+1<CR>gv=gv]])
 
 vim.keymap.set('v', '<leader>_', [[:norm! _]])
 
