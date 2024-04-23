@@ -1396,6 +1396,9 @@ vim.keymap.set('n', 'K', [[:m -2<CR>==]])
 vim.keymap.set('v', 'K', [[:m '<-2<CR>gv=gv]])
 vim.keymap.set('v', 'J', [[:m '>+1<CR>gv=gv]])
 
+vim.keymap.set('n', '<leader>ck', [[:cprev<CR>]])
+vim.keymap.set('n', '<leader>cj', [[:cnext<CR>]])
+
 vim.keymap.set('v', '<leader>_', [[:norm! _]])
 
 vim.keymap.set('n', '<A-d>', [[:bn<CR>]])
