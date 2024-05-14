@@ -1057,12 +1057,13 @@ require('lazy').setup({
       modules = {},
       highlight = {
         enable = true,
+        disable = { "html" },
         -- Some languages depend on vim's regex highlighting system (such as Ruby) for indent rules.
         --  If you are experiencing weird indenting issues, add the language to
         --  the list of additional_vim_regex_highlighting and disabled languages for indent.
         additional_vim_regex_highlighting = { 'ruby' },
       },
-      indent = { enable = true, disable = { 'ruby' } },
+      indent = { enable = true, disable = { 'ruby', 'html' } },
       textobjects = {
         select = {
           enable = true,
