@@ -1040,7 +1040,6 @@ require('lazy').setup({
     'nvim-treesitter/nvim-treesitter',
     dependencies = {
       'nvim-treesitter/nvim-treesitter-textobjects',
-      'nvim-treesitter/nvim-treesitter-context',
     },
     build = ':TSUpdate',
     compilers = { "clang" },
@@ -1078,9 +1077,6 @@ require('lazy').setup({
             ['ic'] = '@class.inner',
           },
         },
-      },
-      context = {
-        min_window_height = 3
       },
     },
     config = function(_, opts)
