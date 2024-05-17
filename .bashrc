@@ -10,7 +10,13 @@ alias v='nvim'
 alias ls='ls --color=auto'
 alias ll='ls -Ahlt --color=auto'
 llh () {
-  ls -Ahlt --color=always | head $(if [[ $# -eq 1 ]]; then echo -n$(($1 + 1)); fi)
+  ls -Ahlt --color=always | head -n$(
+  if [[ $# -eq 1 ]]; then
+    echo $(($1 + 1))
+  else
+    echo $((21))
+  fi
+  )
 }
 alias grep='grep --color=auto'
 alias diff='diff --color=auto'
