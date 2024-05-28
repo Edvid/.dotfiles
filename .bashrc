@@ -22,6 +22,17 @@ alias grep='grep --color=auto'
 alias diff='diff --color=auto'
 alias privateggv='git graphverbose-default --color=always'
 
+alias weather='
+curl -s "https://api.met.no/weatherapi/locationforecast/2.0/compact?lat=55.65&lon=12.3" | \
+jq ".properties.timeseries[0] |
+{
+  time: .time,
+  temperature: .data.instant.details.air_temperature,
+  rain_status: .data.next_1_hours.summary.symbol_code,
+  humidity: .data.instant.details.relative_humidity,
+  wind_speed: .data.instant.details.wind_speed
+}"'
+
 HISTSIZE=20000
 HISTFILESIZE=20000
 
