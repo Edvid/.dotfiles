@@ -55,6 +55,9 @@ files ()
 {
   nohup nautilus --browser $1 >> /dev/null 2>&1 &
 }
+export GOPATH="$HOME/go"
+PATH="$GOPATH/bin:$PATH"
+PATH="$HOME/.shell-ipa:$PATH"
 . "$HOME/.cargo/env"
 source /home/space/Documents/alacritty/extra/completions/alacritty.bash
 eval "$(starship init bash)"
