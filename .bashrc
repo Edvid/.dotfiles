@@ -57,7 +57,7 @@ files ()
 }
 export GOPATH="$HOME/go"
 PATH="$GOPATH/bin:$PATH"
-PATH="$HOME/.shell-ipa:$PATH"
+PATH="$HOME/.shell-ipa/scripts:$PATH"
 . "$HOME/.cargo/env"
 source /home/space/Documents/alacritty/extra/completions/alacritty.bash
 eval "$(starship init bash)"
