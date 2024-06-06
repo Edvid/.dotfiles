@@ -249,28 +249,27 @@ end
 local winSetHighlights = function(colorSet, accentBgColor, highlightColor)
   vim.api.nvim_set_hl(0, 'Normal', { bg = colorSet })
   vim.api.nvim_set_hl(0, 'NormalFloat', { bg = colorSet })
+  vim.api.nvim_set_hl(0, 'NormalNC', { bg = colorSet })
   vim.api.nvim_set_hl(0, 'Cursor', { reverse = true })
-  vim.api.nvim_set_hl(0, 'CursorLineNr', { fg = grabColor('DraculaYellow', 'fg') })
+  vim.api.nvim_set_hl(0, 'CursorLineNr', { fg = grabColor('Number', 'fg') })
   vim.api.nvim_set_hl(0, 'CursorLine', { bg = tern(bgColor == "NONE", "NONE", accentBgColor) })
   vim.api.nvim_set_hl(0, 'ColorColumn', { bg = tern(bgColor == "NONE", "NONE", accentBgColor) })
   vim.api.nvim_set_hl(0, 'Search', { bg = tern(bgColor == "NONE", "NONE", highlightColor) })
-  vim.api.nvim_set_hl(0, 'TabLine', { bg = colorSet, fg = grabColor('DraculaPurple', 'fg') })
   vim.api.nvim_set_hl(0, 'TabLineFill', { bg = colorSet })
   vim.api.nvim_set_hl(0, 'WinSeparator', { bg = colorSet })
   vim.api.nvim_set_hl(0, 'Folded',
-    { fg = grabColor('DraculaBoundary', 'fg'), bg = tern(bgColor == "NONE", "NONE", accentBgColor) })
+    { fg = grabColor('Folded', 'fg'), bg = tern(bgColor == "NONE", "NONE", accentBgColor) })
 end
 
 -- helper function for ToggleColor
 local setupLualine = function(colorSet)
   local conditionalColors = {
-    interactive = { bg = grabColor('DraculaBgLight', 'bg') },
-    visual = { bg = grabColor('DraculaYellow', 'fg'), fg = colorSet },
-    insert = { bg = grabColor('DraculaPurple', 'fg') },
-    terminal = { bg = grabColor('DraculaGreen', 'fg'), fg = colorSet },
-    command = { bg = grabColor('DraculaPink', 'fg') },
-    replace = { bg = "#ad2424" },
-    normal = { bg = tern(bgColor == "NONE", 'white', grabColor('DraculaBgLight', 'bg')) },
+    visual = { bg = grabColor('Type', 'fg'), fg = colorSet },
+    insert = { bg = grabColor('Statement', 'fg') },
+    terminal = { bg = grabColor('String', 'fg'), fg = colorSet },
+    command = { bg = grabColor('Number', 'fg'), fg = colorSet },
+    replace = { bg = grabColor('CurSearch', 'bg'), fg= colorSet },
+    normal = { bg = tern(bgColor == "NONE", 'white', "NONE") },
   }
 
   local function lualine_segment_colors(cols)
@@ -287,10 +286,10 @@ local setupLualine = function(colorSet)
     else
       return {
         a = { fg = textCol, bg = cols.bg, gui = "bold" },
-        b = { fg = "white", bg = grabColor('DraculaBgLighter', 'bg') },
-        c = { bg = grabColor('DraculaBgDark', 'bg') },
-        x = { bg = grabColor('DraculaBgDark', 'bg') },
-        y = { fg = "white", bg = grabColor('DraculaBgLighter', 'bg') },
+        b = { fg = "white", bg = grabColor('WildMenu', 'bg') },
+        c = { bg = grabColor('TabLine', 'bg') },
+        x = { bg = grabColor('TabLine', 'bg') },
+        y = { fg = "white", bg = grabColor('WildMenu', 'bg') },
         z = { fg = textCol, bg = cols.bg }
       }
     end
@@ -313,7 +312,7 @@ local solidBgColor = function()
   if _solidBgColor == nil then
     local ok, mod = pcall(require, 'vimbgcol')
     if not ok then
-      _solidBgColor = grabColor('draculabgdarker', 'bg')
+      _solidBgColor = grabColor('Normal', 'bg')
     else
       _solidBgColor = mod
     end
@@ -1110,11 +1109,12 @@ require('lazy').setup({
 
   {
     -- setting the theme
-    'dracula/vim',
+    'catppuccin/nvim',
     priority = 1000,
     lazy = false,
+    name = "catppuccin",
     config = function()
-      vim.cmd.colorscheme 'dracula'
+      vim.cmd.colorscheme "catppuccin"
       winSetHighlights(bgColor)
     end,
   },
