@@ -788,8 +788,8 @@ require('lazy').setup({
       --  - settings (table): Override the default settings passed when initializing the server.
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
-        clangd = {},
-        gopls = {},
+        -- clangd = {},
+        -- gopls = {}
         pyright = {},
         rust_analyzer = {},
         html = { filetypes = { 'html', 'twig', 'hbs' } },
@@ -988,6 +988,7 @@ require('lazy').setup({
     'rcarriga/nvim-dap-ui',
     dependencies = {
       'mfussenegger/nvim-dap',
+      'nvim-neotest/nvim-nio',
     },
   },
 
