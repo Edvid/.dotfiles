@@ -794,6 +794,16 @@ require('lazy').setup({
         rust_analyzer = {},
         html = { filetypes = { 'html', 'twig', 'hbs' } },
         eslint = {},
+        java_language_server = {
+          handlers = {
+            ['client/registerCapability'] = function(err, result, ctx, config)
+              local registration = {
+                registrations = { result },
+              }
+              return vim.lsp.handlers['client/registerCapability'](err, registration, ctx, config)
+            end
+          },
+        },
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
         --
         -- Some languages (like typescript) have entire language plugins that can be useful:
