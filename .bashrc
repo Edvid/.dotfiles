@@ -33,6 +33,9 @@ jq ".properties.timeseries[0] |
   wind_speed: .data.instant.details.wind_speed
 }"'
 
+shopt -s histappend
+shopt -s checkwinsize
+
 HISTSIZE=20000
 HISTFILESIZE=20000
 
