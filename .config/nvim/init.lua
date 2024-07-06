@@ -1175,6 +1175,10 @@ require('lazy').setup({
     end
   },
 
+  {
+    'mfussenegger/nvim-jdtls',
+  },
+
   "Asheq/close-buffers.vim",
 
   -- code runner for inline feedback for interpreted languages like js, python and lua
@@ -1315,6 +1319,12 @@ dap.configurations.gdscript = {
   }
 }
 require('lspconfig').gdscript.setup {}
+require('jdtls').start_or_attach(
+  {
+    cmd = {'/home/space/.local/share/nvim/mason/packages/jdtls/bin/jdtls'},
+    root_dir = vim.fs.dirname(vim.fs.find({'gradlew', '.git', 'mvnw'}, { upward = true })[1]),
+  }
+)
 
 vim.opt.showmode = false
 
