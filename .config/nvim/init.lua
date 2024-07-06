@@ -1179,6 +1179,11 @@ require('lazy').setup({
     'mfussenegger/nvim-jdtls',
   },
 
+  {
+    "nvim-telescope/telescope-file-browser.nvim",
+    dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
+  },
+
   "Asheq/close-buffers.vim",
 
   -- code runner for inline feedback for interpreted languages like js, python and lua
@@ -1326,6 +1331,29 @@ require('jdtls').start_or_attach(
   }
 )
 
+require("telescope").setup {
+  extensions = {
+    file_browser = {
+      previewer = false,
+      depth = 1,
+      hidden = { file_browser = true, folder_browser = true },
+      theme = "ivy",
+      -- disables netrw and use telescope-file-browser in its place
+      hijack_netrw = true,
+      mappings = {
+        ["i"] = {
+          -- your custom insert mode mappings
+        },
+        ["n"] = {
+          -- your custom normal mode mappings
+        },
+      },
+    },
+  },
+}
+
+require("telescope").load_extension "file_browser"
+
 vim.opt.showmode = false
 
 vim.cmd([[set cursorline]])
@@ -1363,7 +1391,7 @@ vim.keymap.set('v', '<leader>p', [["_dP]], { noremap = true, desc = [[[P]aste wi
 
 -- new file here and explore here keybinds
 vim.keymap.set('n', '<leader>n', [[:FineCmdline edit %:p:h/<CR>]], { desc = [[edit/create [N]ew file here]] })
-vim.keymap.set('n', '<leader>e', [[:Explore<CR>]], { desc = [[[E]xplore from here]] })
+vim.keymap.set('n', '<leader>e', [[:Telescope file_browser<CR>]], { desc = [[[E]xplore from here]] })
 
 -- better keybinds for netrw
 vim.api.nvim_create_autocmd('filetype', {
