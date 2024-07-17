@@ -794,7 +794,6 @@ require('lazy').setup({
         rust_analyzer = {},
         html = { filetypes = { 'html', 'twig', 'hbs' } },
         eslint = {},
-        jdtls = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
         --
         -- Some languages (like typescript) have entire language plugins that can be useful:
@@ -1176,10 +1175,6 @@ require('lazy').setup({
   },
 
   {
-    'mfussenegger/nvim-jdtls',
-  },
-
-  {
     "nvim-telescope/telescope-file-browser.nvim",
     dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
   },
@@ -1323,13 +1318,8 @@ dap.configurations.gdscript = {
     launch_scene = true,
   }
 }
+
 require('lspconfig').gdscript.setup {}
-require('jdtls').start_or_attach(
-  {
-    cmd = {'/home/space/.local/share/nvim/mason/packages/jdtls/bin/jdtls'},
-    root_dir = vim.fs.dirname(vim.fs.find({'gradlew', '.git', 'mvnw'}, { upward = true })[1]),
-  }
-)
 
 require("telescope").setup {
   extensions = {
