@@ -1384,7 +1384,7 @@ vim.keymap.set('n', '<leader>n', [[:FineCmdline edit %:p:h/<CR>]], { desc = [[ed
 vim.keymap.set('n', '<leader>e', [[:Telescope file_browser<CR>]], { desc = [[[E]xplore from here]] })
 
 vim.api.nvim_create_user_command("W",
-  [[:silent !prettier % --write]], { desc = [[save and format with prettier]]}
+  [[:w|silent !prettier % --write]], { desc = [[save and format with prettier]]}
 )
 
 -- better keybinds for netrw
