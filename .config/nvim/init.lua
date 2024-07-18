@@ -1383,6 +1383,10 @@ vim.keymap.set('v', '<leader>p', [["_dP]], { noremap = true, desc = [[[P]aste wi
 vim.keymap.set('n', '<leader>n', [[:FineCmdline edit %:p:h/<CR>]], { desc = [[edit/create [N]ew file here]] })
 vim.keymap.set('n', '<leader>e', [[:Telescope file_browser<CR>]], { desc = [[[E]xplore from here]] })
 
+vim.api.nvim_create_user_command("W",
+  [[:silent !prettier % --write]], { desc = [[save and format with prettier]]}
+)
+
 -- better keybinds for netrw
 vim.api.nvim_create_autocmd('filetype', {
   pattern = 'netrw',
