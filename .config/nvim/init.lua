@@ -580,11 +580,28 @@ require('lazy').setup({
         return git_root
       end
 
+      local function live_grep_normal()
+        require('telescope.builtin').live_grep {
+          previewer = true,
+          layout_strategy = 'vertical',
+          layout_config = {
+            vertical = { width = 0.8 },
+            preview_cutoff = 1
+          }
+        }
+      end
+
       local function live_grep_git_root()
         local git_root = find_git_root()
         if git_root then
           require('telescope.builtin').live_grep {
             search_dirs = { git_root },
+            previewer = true,
+            layout_strategy = 'vertical',
+            layout_config = {
+              vertical = { width = 0.8 },
+              preview_cutoff = 1
+            }
           }
         end
       end
@@ -592,7 +609,7 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>sf', builtin.find_files, { desc = '[S]earch [F]iles' })
       vim.keymap.set('n', '<leader>sT', builtin.builtin, { desc = '[S]earch  [T]elescope built ins' })
       vim.keymap.set('n', '<leader>sw', builtin.grep_string, { desc = '[S]earch current [W]ord' })
-      vim.keymap.set('n', '<leader>sC', builtin.live_grep, { desc = '[S]earch [C]ontents' })
+      vim.keymap.set('n', '<leader>sC', live_grep_normal, { desc = '[S]earch [C]ontents' })
       vim.keymap.set('n', '<leader>sd', builtin.diagnostics, { desc = '[S]earch [D]iagnostics' })
       vim.keymap.set('n', '<leader>sg', builtin.git_files, { desc = '[S]earch [G]it Files' })
       vim.keymap.set('n', '<leader>sc', live_grep_git_root, { desc = '[S]earch [c]ontents in Git Root' })
