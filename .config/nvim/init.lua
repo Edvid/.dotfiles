@@ -606,6 +606,17 @@ require('lazy').setup({
         end
       end
 
+      local function git_status ()
+        require('telescope.builtin').git_status {
+          previewer = true,
+          layout_strategy = 'vertical',
+          layout_config = {
+            vertical = { width = 0.8 },
+            preview_cutoff = 1
+          }
+        }
+      end
+
       vim.keymap.set('n', '<leader>sf', builtin.find_files, { desc = '[S]earch [F]iles' })
       vim.keymap.set('n', '<leader>sT', builtin.builtin, { desc = '[S]earch  [T]elescope built ins' })
       vim.keymap.set('n', '<leader>sw', builtin.grep_string, { desc = '[S]earch current [W]ord' })
@@ -616,7 +627,7 @@ require('lazy').setup({
       -- vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = '[S]earch [R]esume' })
       vim.keymap.set('n', '<leader>sx', builtin.commands, { desc = '[S]earch commands/e[X]ecutables' })
 
-      vim.keymap.set('n', '<leader>sa', builtin.git_status, { desc = '[S]earch [A]ll git changes' })
+      vim.keymap.set('n', '<leader>sa', git_status, { desc = '[S]earch [A]ll git changes' })
       vim.keymap.set('n', '<leader>sr', [[:%s///g<Left><Left><Left>]], { desc = '[S]earch & global [R]eplace' })
       vim.keymap.set('v', '<leader>sr', [[:s///g<Left><Left><Left>]], { desc = '[S]earch & this [L]line [R]eplace' })
 
