@@ -1443,8 +1443,8 @@ vim.keymap.set('n', '<leader>col', [[:FineCmdline set cc=<CR>]], { desc = 'Color
 vim.keymap.set('n', '<leader>run', [[:Lab code run<CR>]], { desc = '[RUN] lab code runner' })
 vim.keymap.set('n', '<leader>stop', [[:Lab code stop<CR>]], { desc = '[STOP] lab code runner' })
 
-vim.keymap.set('n', '<leader>f', [[/]])
-vim.keymap.set('x', '<leader>q', [[@]])
+vim.keymap.set({ 'n', 'v' }, '<leader>f', [[/]])
+vim.keymap.set({ 'n', 'v' }, '<leader>q', [[@]])
 
 vim.keymap.set('n', 'gp', '`[v`]', { desc = "Reselect last pasted" })
 
