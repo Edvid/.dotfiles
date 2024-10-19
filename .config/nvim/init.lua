@@ -1382,6 +1382,23 @@ vim.cmd([[au BufRead,BufNewFile * set expandtab]])
 vim.cmd([[au BufRead,BufNewFile */COMMIT_EDITMSG set cc=70]])
 
 
+vim.keymap.set({ 'n', 'v' }, 'X', function()
+  local thisline = vim.api.nvim_get_current_line()
+  if
+    string.find(thisline, "^ *%[X%]") or
+    string.find(thisline, "^ *- %[X%]") then
+    vim.cmd([[execute "normal" "mz"]])
+    vim.cmd([[s/\[X\]/\[ \]/]])
+    vim.cmd([[execute "normal" "`z"]])
+  elseif
+    string.find(thisline, "^ *%[ %]") or
+    string.find(thisline, "^ *- %[ %]") then
+    vim.cmd([[execute "normal" "mz"]])
+    vim.cmd([[s/\[ \]/\[X\]/]])
+    vim.cmd([[execute "normal" "`z"]])
+  end
+end)
+
 ToggleColor()
 vim.api.nvim_create_user_command("ToggleTransparency", function()
   ToggleColor()
