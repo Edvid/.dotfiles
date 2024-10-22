@@ -1381,22 +1381,42 @@ vim.cmd([[au BufRead,BufNewFile * set ts=2]])
 vim.cmd([[au BufRead,BufNewFile * set expandtab]])
 vim.cmd([[au BufRead,BufNewFile */COMMIT_EDITMSG set cc=70]])
 
+local function tick_checkboxes(startline, endline)
+  for lineindex = startline, endline do
+    local thisline = vim.api.nvim_buf_get_lines(0, lineindex - 1, lineindex, true)[1]
+    local search_and_replace
 
-vim.keymap.set({ 'n', 'v' }, 'X', function()
-  local thisline = vim.api.nvim_get_current_line()
-  if
-    string.find(thisline, "^ *%[X%]") or
-    string.find(thisline, "^ *- %[X%]") then
+    if
+      string.find(thisline, "^ *%[X%]") or
+      string.find(thisline, "^ *- %[X%]") then
+      search_and_replace = lineindex .. [[s/\[X\]/\[ \]/]]
+    elseif
+      string.find(thisline, "^ *%[ %]") or
+      string.find(thisline, "^ *- %[ %]") then
+      search_and_replace = lineindex .. [[s/\[ \]/\[X\]/]]
+    else
+      goto continue
+    end
+
     vim.cmd([[execute "normal" "mz"]])
-    vim.cmd([[s/\[X\]/\[ \]/]])
+    vim.cmd(search_and_replace)
+    vim.cmd([[nohlsearch]])
     vim.cmd([[execute "normal" "`z"]])
-  elseif
-    string.find(thisline, "^ *%[ %]") or
-    string.find(thisline, "^ *- %[ %]") then
-    vim.cmd([[execute "normal" "mz"]])
-    vim.cmd([[s/\[ \]/\[X\]/]])
-    vim.cmd([[execute "normal" "`z"]])
+    ::continue::
   end
+end
+
+vim.keymap.set({ 'n' }, 'X', function()
+  local linenum = vim.fn.getcurpos()[2]
+  tick_checkboxes(linenum, linenum)
+end)
+vim.keymap.set({ 'v' }, 'X', function()
+  local start_sel = vim.fn.getpos([[.]])[2]
+  local end_sel = vim.fn.getpos([[v]])[2]
+  tick_checkboxes(
+    math.min(start_sel, end_sel),
+    math.max(start_sel, end_sel)
+  )
 end)
 
 ToggleColor()
