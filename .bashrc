@@ -21,6 +21,7 @@ llh () {
 alias grep='grep --color=auto'
 alias diff='diff --color=auto'
 alias privateggv='git graphverbose-default --color=always'
+alias privateggvdate='git graphverbose-fixed-date --color=always'
 
 alias weather='
 curl -s "https://api.met.no/weatherapi/locationforecast/2.0/compact?lat=55.65&lon=12.3" | \
@@ -47,8 +48,10 @@ alias gg='privategg --all'
 alias gghere='privategg main HEAD'
 alias ggbr='privategg main..HEAD'
 alias ggv='privateggv --all'
+alias ggd='privateggvdate --all'
 alias ggvhere='privateggv main HEAD'
 alias ggvbr='privateggv main..HEAD'
+alias ggdbr='privateggvdate main..HEAD'
 
 timer ()
 {
