@@ -71,3 +71,10 @@ eval "$(starship init bash)"
 [[ ${BLE_VERSION-} ]] && ble-attach
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+# fnm
+FNM_PATH="/home/space/.local/share/fnm"
+if [ -d "$FNM_PATH" ]; then
+  export PATH="$FNM_PATH:$PATH"
+  eval "`fnm env`"
+fi
