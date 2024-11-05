@@ -931,7 +931,8 @@ require('lazy').setup({
             luasnip.lsp_expand(args.body)
           end,
         },
-        completion = { completeopt = 'menu,menuone,noinsert' },
+        -- weird with Godot, so disabled for now. Will re-enable once either godot 4.4 or 4.3.1 is available
+        -- completion = { completeopt = 'menu,menuone' },
 
         formatting = {
           format = function(entry, vim_item)
@@ -1287,6 +1288,15 @@ require('nvim-highlight-colors').turnOn()
 vim.keymap.set('n', '<leader>dk', vim.diagnostic.goto_prev, { desc = 'Go to previous diagnostic message' })
 vim.keymap.set('n', '<leader>dj', vim.diagnostic.goto_next, { desc = 'Go to next diagnostic message' })
 
+-- quit nvim dap floats with q
+vim.api.nvim_create_autocmd('filetype', {
+  pattern = 'dap-float',
+  desc = 'quit floats with q',
+  callback = function()
+    vim.keymap.set('n', 'q', '<C-w>q', { remap = true, buffer = true })
+  end
+})
+--
 -- Debugger keymaps
 require('dapui').setup()
 
@@ -1323,9 +1333,6 @@ require('gen').setup({
 vim.keymap.set({ 'n', 'v' }, '<leader>Gch', [[:Gen Chat<CR>]], { desc = [[using [Gen] [ch]at with AI]] })
 vim.keymap.set('v', '<leader>Gcc', [[:Gen Change_Code<CR>]], { desc = [[using [Gen], [C]hange [C]ode with AI]] })
 
-vim.keymap.set('n', '<leader>dt', require('dapui').toggle, { desc = '[D]ebugger [T]oggle' })
-vim.keymap.set('n', '<leader>db', [[:DapToggleBreakpoint<CR>]], { desc = '[D]ebugger toggle [B]reakpoint' })
-
 -- Setup neovim lua configuration
 require('neodev').setup()
 
@@ -1333,8 +1340,8 @@ require('neodev').setup()
 local dap = require('dap')
 dap.adapters.godot = {
   type = 'server',
-  host = '192.0.0.1',
-  port = 6007,
+  host = '127.0.0.1',
+  port = 6006,
 }
 
 dap.configurations.gdscript = {
@@ -1346,6 +1353,20 @@ dap.configurations.gdscript = {
     launch_scene = true,
   }
 }
+
+vim.keymap.set('n', '<leader>dt', require('dapui').toggle, { desc = '[D]ebugger [T]oggle' })
+vim.keymap.set('n', '<leader>db', [[:DapToggleBreakpoint<CR>]], { desc = '[D]ebugger toggle [B]reakpoint' })
+vim.keymap.set('n', '<Leader>dr', dap.continue, { desc = '[D]ebugger [R]un or continue'} )
+vim.keymap.set('n', '<Leader>dc', function()
+  dap.terminate()
+  require('dapui').close()
+end , { desc = '[D]ebugger [C]lose'} )
+vim.keymap.set('n', '<leader>d<C-J>', dap.step_over, { desc = '[D]ebugger DOWN (step over)' })
+vim.keymap.set('n', '<leader>d<C-L>', dap.step_into, { desc = '[D]ebugger RIGHT (step into)' })
+vim.keymap.set('n', '<leader>d<C-H>', dap.step_out, { desc = '[D]ebugger LEFT (step out)' })
+vim.keymap.set({'n', 'v'}, '<Leader>dh', function()
+  require('dap.ui.widgets').hover()
+end, { desc = '[D]ebugger [H]over'})
 
 require('lspconfig').gdscript.setup {}
 
