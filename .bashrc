@@ -3,7 +3,7 @@
 #
 
 # If not running interactively, don't do anything
-[[ $- == *i* ]] && source ~/blesh/ble.sh --noattach
+[[ $- == *i* ]] && source ~/blesh/ble.sh --noattach && source <(carapace _carapace)
 [[ -s /home/space/.autojump/etc/profile.d/autojump.sh ]] && source /home/space/.autojump/etc/profile.d/autojump.sh
 alias v='nvim'
 
