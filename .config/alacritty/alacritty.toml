@@ -1,26 +1,45 @@
 [font]
-# normal = { family = "CaskaydiaCove Nerd Font Mono" }
-# size = 23
-
-# normal = { family = "GeistMono Nerd Font Mono" }
-# size = 21.5
-
-# normal = { family = "Big Blue Term437 Nerd Font Mono" }
-# size = 24
-
-# normal = { family = "Meslo LGM Nerd Font Mono" }
-# size = 22
-
-# normal = { family = "Martian Mono Nerd Font Mono" }
-# size = 22
-
-# normal = { family = "GoMonoNerdFont" }
-# size = 23
-# size = 31
 
 normal = { family = "JetBrainsMonoNerdFontMono" }
 size = 18
-# size = 36.5
+
+[keyboard]
+bindings = [
+  { key = "9", mods = "Control", action = "ResetFontSize"},
+  { key = "9", mods = "Control", action = "IncreaseFontSize"},
+  { key = "9", mods = "Control", action = "IncreaseFontSize"},
+  { key = "9", mods = "Control", action = "IncreaseFontSize"},
+  { key = "9", mods = "Control", action = "IncreaseFontSize"},
+  { key = "9", mods = "Control", action = "IncreaseFontSize"},
+  { key = "9", mods = "Control", action = "IncreaseFontSize"},
+  { key = "9", mods = "Control", action = "IncreaseFontSize"},
+
+  { key = "8", mods = "Control", action = "ResetFontSize"},
+  { key = "8", mods = "Control", action = "IncreaseFontSize"},
+  { key = "8", mods = "Control", action = "IncreaseFontSize"},
+  { key = "8", mods = "Control", action = "IncreaseFontSize"},
+  { key = "8", mods = "Control", action = "IncreaseFontSize"},
+  { key = "8", mods = "Control", action = "IncreaseFontSize"},
+  { key = "8", mods = "Control", action = "IncreaseFontSize"},
+  { key = "8", mods = "Control", action = "IncreaseFontSize"},
+  { key = "8", mods = "Control", action = "IncreaseFontSize"},
+  { key = "8", mods = "Control", action = "IncreaseFontSize"},
+  { key = "8", mods = "Control", action = "IncreaseFontSize"},
+  { key = "8", mods = "Control", action = "IncreaseFontSize"},
+  { key = "8", mods = "Control", action = "IncreaseFontSize"},
+  { key = "8", mods = "Control", action = "IncreaseFontSize"},
+  { key = "8", mods = "Control", action = "IncreaseFontSize"},
+  { key = "8", mods = "Control", action = "IncreaseFontSize"},
+  { key = "8", mods = "Control", action = "IncreaseFontSize"},
+  { key = "8", mods = "Control", action = "IncreaseFontSize"},
+  { key = "8", mods = "Control", action = "IncreaseFontSize"},
+  { key = "8", mods = "Control", action = "IncreaseFontSize"},
+  { key = "8", mods = "Control", action = "IncreaseFontSize"},
+  { key = "8", mods = "Control", action = "IncreaseFontSize"},
+  { key = "8", mods = "Control", action = "IncreaseFontSize"},
+  { key = "8", mods = "Control", action = "IncreaseFontSize"},
+  { key = "8", mods = "Control", action = "IncreaseFontSize"}
+]
 
 [window]
 startup_mode = "Fullscreen"
