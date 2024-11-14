@@ -1497,6 +1497,8 @@ vim.api.nvim_set_hl(0, "TreesitterContextLineNumber", { fg = [[#9CB8FF]] })
 vim.keymap.set('n', '<leader>who', [[:G blame<CR>]])
 vim.keymap.set('n', '<leader>cl', [[:Bd other<CR>]])
 vim.keymap.set('n', '<leader>col', [[:FineCmdline set cc=<CR>]], { desc = 'Color in [COL]umn at given number' })
+vim.keymap.set('n', '<leader>gd', [[:Gdiff!<CR>]], { desc = 'Fu[git]ive [d]iff'} )
+-- NOTE: vim has a native mapping 'dp' for :diffget
 
 vim.keymap.set('n', '<leader>run', [[:Lab code run<CR>]], { desc = '[RUN] lab code runner' })
 vim.keymap.set('n', '<leader>stop', [[:Lab code stop<CR>]], { desc = '[STOP] lab code runner' })
