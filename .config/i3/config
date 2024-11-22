@@ -24,6 +24,13 @@ bindsym $mod+q exec "~/audiotoggle.sh"
 # flameshot screenshot tool
 bindsym $mod+Shift+s exec "flameshot gui"
 
+# Start the daemon which listens to focus changes and sets _back mark
+exec --no-startup-id /usr/bin/i3-back
+
+# Bind a switch key, which focuses the previously focused window
+bindsym Mod1+Tab [con_mark=_back] focus
+
+
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
 #font pango:DejaVu Sans Mono 8
