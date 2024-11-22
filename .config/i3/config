@@ -21,6 +21,9 @@ focus_follows_mouse no
 # Toggle audio device with Super+Q
 bindsym $mod+q exec "~/audiotoggle.sh"
 
+# flameshot screenshot tool
+bindsym $mod+Shift+s exec "flameshot gui"
+
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
 #font pango:DejaVu Sans Mono 8
