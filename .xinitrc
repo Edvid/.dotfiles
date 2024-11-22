@@ -1,5 +1,9 @@
 #!/bin/sh
 
+# disable sleep
+xset s off
+xset -dpms
+
 # Set correct keyboard layout
 setxkbmap dk
 
