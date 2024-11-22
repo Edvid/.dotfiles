@@ -15,6 +15,12 @@ set $mod Mod4
 # is used in the bar {} block below.
 font pango:JetBrainsMono Nerd Font Bold 18
 
+#Display Wallpaper
+exec_always feh --bg-fill ~/.local/share/backgrounds/flamingo_darkmode.avif
+
+#Use picom window compositor
+exec_always picom --fade-in-step=1 --fade-out-step=1 --fade-delta=0
+
 # Moving mouse over windows should not focus them
 focus_follows_mouse no
 
