@@ -172,6 +172,8 @@ vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 vim.cmd(
   [[autocmd FileType sql,mysql,plsql lua require('cmp').setup.buffer({ sources = {{ name = 'vim-dadbod-completion' }} })]])
 
+-- remove F1 as help page. I have too many accidents
+vim.keymap.set({ 'n', 'v' }, '<F1>' , '<Nop>', { silent = true })
 -- Keymaps for better default experience
 -- See `:help vim.keymap.set()`
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
