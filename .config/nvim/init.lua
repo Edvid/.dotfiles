@@ -463,6 +463,20 @@ require('lazy').setup({
     'ThePrimeagen/git-worktree.nvim'
   },
 
+  {
+    "NeogitOrg/neogit",
+    dependencies = {
+      "nvim-lua/plenary.nvim",         -- required
+      "sindrets/diffview.nvim",        -- optional - Diff integration
+
+      -- Only one of these is needed.
+      "nvim-telescope/telescope.nvim", -- optional
+      "ibhagwan/fzf-lua",              -- optional
+      "echasnovski/mini.pick",         -- optional
+    },
+    config = true
+  },
+
   { -- Useful plugin to show you pending keybinds.
     'folke/which-key.nvim',
     event = 'VimEnter', -- Sets the loading event to 'VimEnter'
@@ -1500,7 +1514,9 @@ vim.keymap.set('n', '<leader>who', [[:G blame<CR>]])
 vim.keymap.set('n', '<leader>cl', [[:Bd other<CR>]])
 vim.keymap.set('n', '<leader>col', [[:FineCmdline set cc=<CR>]], { desc = 'Color in [COL]umn at given number' })
 vim.keymap.set('n', '<leader>gd', [[:Gdiff!<CR>]], { desc = 'Fu[git]ive [d]iff'} )
--- NOTE: vim has a native mapping 'dp' for :diffget
+-- NOTE: vim has a native mapping 'dp' for :diffput
+vim.keymap.set('n', '<leader>gk', [[:diffget //2<CR>]], { desc = 'diffget grab up'} )
+vim.keymap.set('n', '<leader>gj', [[:diffget //3<CR>]], { desc = 'diffget grab down'} )
 
 vim.keymap.set('n', '<leader>run', [[:Lab code run<CR>]], { desc = '[RUN] lab code runner' })
 vim.keymap.set('n', '<leader>stop', [[:Lab code stop<CR>]], { desc = '[STOP] lab code runner' })
