@@ -75,7 +75,9 @@ exec --no-startup-id setxkbmap dk
 # On arch it's aur. You can't use pacman for that,
 # but you could install yay
 exec --no-startup-id xkbset m
-exec --no-startup-id xkbset ma 10 10 3000 200 10
+exec --no-startup-id xkbset ma 10 10 3500 500 10
+exec --no-startup-id xkbset exp =m
+exec --no-startup-id xkbset exp =ma
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
