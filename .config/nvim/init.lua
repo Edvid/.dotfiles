@@ -1234,6 +1234,10 @@ require('lazy').setup({
     dependencies = {
       'nvim-lua/plenary.nvim',
     },
+  },
+
+  {
+    'whonore/Coqtail'
   }
 
   -- The following two comments only work if you have downloaded the kickstart repo, not just copy pasted the
@@ -1547,6 +1551,8 @@ vim.keymap.set('n', '<A-q>', [[:bf<CR>:3bn<CR>]])
 vim.keymap.set('n', '<A-w>', [[:bf<CR>:4bn<CR>]])
 vim.keymap.set('n', '<A-e>', [[:bf<CR>:5bn<CR>]])
 vim.keymap.set({ 'n', 'v', 'o', 'c' }, '<C-z>', '<Nop>')
+
+vim.cmd([[set rtp^="/home/space/.opam/default/share/ocp-indent/vim"]])
 
 vim.opt.wrap = true
 vim.opt.linebreak = true
