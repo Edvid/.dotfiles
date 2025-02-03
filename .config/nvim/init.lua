@@ -1544,12 +1544,6 @@ vim.keymap.set('v', '<leader>_', [[:norm! _]])
 
 vim.keymap.set('n', '<A-d>', [[:bn<CR>]])
 vim.keymap.set('n', '<A-a>', [[:bN<CR>]])
-vim.keymap.set('n', '<A-1>', [[:bf<CR>]])
-vim.keymap.set('n', '<A-2>', [[:bf<CR>:bn<CR>]])
-vim.keymap.set('n', '<A-3>', [[:bf<CR>:2bn<CR>]])
-vim.keymap.set('n', '<A-q>', [[:bf<CR>:3bn<CR>]])
-vim.keymap.set('n', '<A-w>', [[:bf<CR>:4bn<CR>]])
-vim.keymap.set('n', '<A-e>', [[:bf<CR>:5bn<CR>]])
 vim.keymap.set({ 'n', 'v', 'o', 'c' }, '<C-z>', '<Nop>')
 
 vim.cmd([[set rtp^="/home/space/.opam/default/share/ocp-indent/vim"]])
