@@ -665,6 +665,7 @@ require('lazy').setup({
 
       vim.keymap.set('n', '<leader>sr', [[:%s///g<Left><Left><Left>]], { desc = '[S]earch & global [R]eplace' })
       vim.keymap.set('v', '<leader>sr', [[:s///g<Left><Left><Left>]], { desc = '[S]earch & this [L]line [R]eplace' })
+      vim.keymap.set('n', '<leader>sa', builtin.git_status, { desc = '[S]earch current [W]ord' })
       -- Slightly advanced example of overriding default behavior and theme
       vim.keymap.set('n', '<leader>/', function()
         -- You can pass additional configuration to Telescope to change the theme, layout, etc.
