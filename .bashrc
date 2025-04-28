@@ -7,8 +7,8 @@
 [[ -s /home/space/.autojump/etc/profile.d/autojump.sh ]] && source /home/space/.autojump/etc/profile.d/autojump.sh
 alias v='nvim'
 
-alias ls='ls --color=auto'
-alias ll='ls -Ahlt --color=auto'
+alias ls='ls --color=always'
+alias ll='ls -Ahlt --color=always'
 llh () {
   ls -Ahlt --color=always | head -n$(
   if [[ $# -eq 1 ]]; then
