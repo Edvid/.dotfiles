@@ -7,6 +7,7 @@
 [[ -s /home/space/.autojump/etc/profile.d/autojump.sh ]] && source /home/space/.autojump/etc/profile.d/autojump.sh
 alias v='nvim'
 
+alias gs='git status -v'
 alias ls='ls --color=always'
 alias ll='ls -Ahlt --color=always'
 llh () {
