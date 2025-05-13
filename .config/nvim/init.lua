@@ -1636,6 +1636,7 @@ vim.keymap.set({ 'n', 'v' }, '<leader>q', [[@]])
 vim.keymap.set('n', 'gp', '`[v`]', { desc = "Reselect last pasted" })
 
 vim.keymap.set('n', '<leader>J', [[mz<cmd>join<CR>`z]])
+vim.keymap.set('v', '<leader>J', [[mz<cmd>'<,'>join<CR>`z]])
 
 vim.keymap.set('n', 'J', [[:m +1<CR>==]])
 vim.keymap.set('n', 'K', [[:m -2<CR>==]])
