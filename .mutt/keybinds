@@ -1,0 +1,17 @@
+bind index gg first-entry
+bind index G last-entry
+bind index  half-down
+bind index  half-up
+
+bind pager j next-line
+bind pager k previous-line
+
+bind pager  half-down
+bind pager  half-up
+bind pager d noop
+bind pager u noop
+
+# for unbinding
+# bind map key noop
+#
+# set filetype=muttrc
