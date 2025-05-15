@@ -9,6 +9,8 @@ set smtp_pass    ="`cat ~/.mutt/account.yaml | yq '.password'`"
 set spoolfile    =+INBOX
 set postponed
 set from ="`cat ~/.mutt/account.yaml | yq '.from'`"
+alternates `cat ~/.mutt/account.yaml | yq '.alternates'`
+
 # Store message headers locally to speed things up.
 # If hcache is a folder, Mutt will create sub cache folders for each account which may speeds things up even more.
 set header_cache = ~/.cache/mutt
