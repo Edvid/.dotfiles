@@ -1,3 +1,6 @@
+# for unbinding
+# bind map key noop
+
 bind index gg first-entry
 bind index G last-entry
 bind index  half-down
@@ -11,7 +14,7 @@ bind pager  half-up
 bind pager d noop
 bind pager u noop
 
-# for unbinding
-# bind map key noop
-#
+macro pager of "|cat > temp_mail_out.html;xdg-open temp_mail_out.html<enter>" open_file
+macro pager og "|gunzip | yq -p xml | nvim -c \"set filetype=yaml\"<enter>" open_gunzip
+
 # set filetype=muttrc
