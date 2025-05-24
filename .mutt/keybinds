@@ -17,4 +17,4 @@ bind pager u noop
 macro pager of "|cat > temp_mail_out.html;xdg-open temp_mail_out.html<enter>" open_file
 macro pager og "|gunzip | yq -p xml | nvim -c \"set filetype=yaml\"<enter>" open_gunzip
 
-# set filetype=muttrc
+# vim: set filetype=muttrc
