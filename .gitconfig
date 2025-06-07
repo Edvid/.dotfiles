@@ -10,7 +10,7 @@
   graphverbose-fixed-date = log --graph --abbrev-commit --decorate --color=always --pretty=tformat:'%C(bold 75)%aD%n%C(reset)%B'
 [core]
   pager = less
-	editor = nvim
+  editor = nvim
 [credential]
   helper = store --file ~/.git.credentials
 [push]
