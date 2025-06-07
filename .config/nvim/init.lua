@@ -1522,7 +1522,7 @@ vim.cmd([[set cursorline]])
 vim.cmd([[au BufRead,BufNewFile * set sw=0]])
 vim.cmd([[au BufRead,BufNewFile * set ts=2]])
 vim.cmd([[au BufRead,BufNewFile * set expandtab]])
-vim.cmd([[au BufRead,BufNewFile */COMMIT_EDITMSG set cc=70]])
+vim.cmd([[au BufRead,BufNewFile */COMMIT_EDITMSG set cc=72]])
 
 local function tick_checkboxes(startline, endline)
   for lineindex = startline, endline do
