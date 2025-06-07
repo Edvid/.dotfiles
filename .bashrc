@@ -42,7 +42,7 @@ HISTSIZE=20000
 HISTFILESIZE=20000
 
 privategg () {
-  git graph --color=always $1 $2 $3 $4 | head -n20
+  git graph-default --color=always $1 $2 $3 $4 | head -n20
 }
 
 alias gg='privategg --all'
