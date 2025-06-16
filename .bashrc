@@ -77,5 +77,5 @@ eval "$(starship init bash)"
 FNM_PATH="/home/space/.local/share/fnm"
 if [ -d "$FNM_PATH" ]; then
   export PATH="$FNM_PATH:$PATH"
-  eval "`fnm env`"
+  eval "`fnm env --shell=bash`"
 fi
