@@ -14,7 +14,7 @@ bind pager  half-up
 bind pager d noop
 bind pager u noop
 
-macro pager of "|cat > temp_mail_out.html;xdg-open temp_mail_out.html<enter>" open_file
-macro pager og "|gunzip | yq -p xml | nvim -c \"set filetype=yaml\"<enter>" open_gunzip
+macro pager of "v/text/html<enter><enter>|cat > temp_mail_out.html;xdg-open temp_mail_out.html<enter>" open_file
+macro pager og "v//gzip<enter><enter>|gunzip | yq -p xml | nvim -c \"set filetype=yaml\"<enter>" open_gunzip
 
 # vim: set filetype=muttrc
