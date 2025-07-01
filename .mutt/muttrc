@@ -41,3 +41,4 @@ set editor=nvim
 set edit_headers=yes
 
 source ~/.mutt/keybinds
+source ~/.mutt/colours

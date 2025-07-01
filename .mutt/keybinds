@@ -1,3 +1,5 @@
+# vim: set filetype=muttrc
+#
 # for unbinding
 # bind map key noop
 
@@ -17,5 +19,3 @@ bind pager u noop
 macro pager of "v/text/html<enter><enter>|cat > temp_mail_out.html;xdg-open temp_mail_out.html<enter>" open_file
 macro pager og "v//gzip<enter><enter>|gunzip | yq -p xml | nvim -c \"set filetype=yaml\"<enter>" open_gunzip
 macro pager on "v/text/plain<enter><enter>|nvim <enter>" open_nvim
-
-# vim: set filetype=muttrc

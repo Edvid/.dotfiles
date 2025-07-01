@@ -1,0 +1,12 @@
+# vim: set filetype=muttrc
+
+color message color251 black
+color status color166 color234
+color indicator color172 color238
+color attachment color147 black
+
+color header color178 black "."
+color header color28 black "^(From:)"
+color header color28 black "^(To:)"
+color header color33 black "^(Subject:)"
+
