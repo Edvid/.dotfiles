@@ -73,6 +73,10 @@ eval "$(starship init bash)"
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
+dconf write /org/gnome/desktop/a11y/keyboard/mousekeys-enable true
+
+(sleep 5 && xkbset ma 1 10 1800 120 10) &
+
 # fnm
 FNM_PATH="/home/$USERNAME/.local/share/fnm"
 if [ -d "$FNM_PATH" ]; then
