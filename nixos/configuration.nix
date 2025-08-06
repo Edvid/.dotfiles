@@ -141,6 +141,8 @@ in
     nodejs_22
     rustup
     ripgrep
+    starship
+    blesh
     carapace
   ];
 
