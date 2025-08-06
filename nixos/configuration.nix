@@ -4,6 +4,10 @@
 
 { config, lib, pkgs, ... }:
 
+let env = {
+  user = "space";
+};
+in
 {
   nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
     "discord"
@@ -91,7 +95,7 @@
   # services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.space = {
+  users.users.${env.user} = {
     isNormalUser = true;
     description = "Space";
     extraGroups = [ "networkmanager" "wheel" ];
@@ -104,6 +108,11 @@
       keepassxc
     ];
   };
+
+  services.udev.extraRules = ''
+    KERNEL=="uinput", GROUP="${env.user}", MODE:="0660"
+    KERNEL=="event*", GROUP="${env.user}", NAME="input/%k", MODE="660" 
+  '';
 
   # Install firefox.
   programs.firefox.enable = true;
