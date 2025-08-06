@@ -99,6 +99,7 @@
       kdePackages.kate
       discord
       gimp
+      flameshot
       keepassxc
     ];
   };
