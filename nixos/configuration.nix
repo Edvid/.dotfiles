@@ -100,6 +100,7 @@
       discord
       gimp
       flameshot
+      alacritty
       keepassxc
     ];
   };
