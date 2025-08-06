@@ -140,6 +140,7 @@ in
     nodejs_22
     rustup
     ripgrep
+    carapace
   ];
 
   environment.variables = {
