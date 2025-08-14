@@ -114,6 +114,7 @@ in
       flameshot
       alacritty
       keepassxc
+      ungoogled-chromium
     ];
   };
 
