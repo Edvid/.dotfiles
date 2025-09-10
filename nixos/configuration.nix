@@ -11,6 +11,7 @@ in
 {
   nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
     "discord"
+    "aseprite"
   ];
   imports =
     [ # Include the results of the hardware scan.
@@ -111,6 +112,7 @@ in
       kdePackages.kate
       discord
       gimp
+      aseprite-unfree
       flameshot
       alacritty
       keepassxc
