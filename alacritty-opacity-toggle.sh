@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/usr/bin/env bash
 
 ## If alacritty.yml does not exist, raise an alert
 [[ ! -f ~/.config/alacritty/alacritty.toml ]] && \
