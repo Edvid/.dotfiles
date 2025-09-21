@@ -62,6 +62,7 @@ files ()
 {
   nohup nautilus --browser $1 >> /dev/null 2>&1 &
 }
+export PATH=$PATH:/usr/local/go/bin
 export GOPATH="$HOME/go"
 PATH="$GOPATH/bin:$PATH"
 PATH="$HOME/.shell-ipa/scripts:$PATH"
