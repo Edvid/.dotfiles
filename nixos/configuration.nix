@@ -163,6 +163,12 @@ in
 
   # List services that you want to enable:
 
+  # Enable nix LD
+  programs.nix-ld.enable = true;
+  programs.nix-ld.libraries = with pkgs; [
+    rust-analyzer
+  ];
+
   # Enable docker
   virtualisation.docker.enable = true;
   users.extraGroups.docker.members = [ "${env.user}" ];
