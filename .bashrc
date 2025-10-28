@@ -77,9 +77,6 @@ eval "$(starship init bash)"
 
 dconf write /org/gnome/desktop/a11y/keyboard/mousekeys-enable true
 
-# fnm
-FNM_PATH="/home/$USERNAME/.local/share/fnm"
-if [ -d "$FNM_PATH" ]; then
-  export PATH="$FNM_PATH:$PATH"
-  eval "`fnm env --shell=bash`"
-fi
+# npm stuff
+export PATH=~/.npm-packages/bin:$PATH
+export NODE_PATH=~/.npm-packages/lib/node_modules
