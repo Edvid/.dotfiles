@@ -163,6 +163,15 @@ in
 
   # List services that you want to enable:
 
+  # Enable docker
+  virtualisation.docker.enable = true;
+  users.extraGroups.docker.members = [ "${env.user}" ];
+
+  # Enable VirtualBox
+  virtualisation.virtualbox.host.enable = true;
+  users.extraGroups.vboxusers.members = [ "${env.user}" ];
+  boot.kernelParams = [ "kvm.enable_virt_at_load=0" ];
+
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
 
