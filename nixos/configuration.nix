@@ -111,7 +111,7 @@ in
     packages = with pkgs; [
       kdePackages.kate
       discord
-      gimp
+      gimp3
       aseprite-unfree
       flameshot
       alacritty
