@@ -322,6 +322,7 @@ require("lazy").setup({
       },
     },
   },
+  -- FIX: reduce
   {
     -- Main LSP Configuration
     'neovim/nvim-lspconfig',
