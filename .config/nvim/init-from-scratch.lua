@@ -846,7 +846,7 @@ vim.schedule(function()
   vim.cmd([[highlight! link TodoFgTODO Conceal]])
   vim.cmd([[highlight! link TodoBgNOTE TodoBgTODO]])
   vim.cmd([[highlight! link TodoFgNOTE TodoFgTODO]])
-  -- vim.cmd([[highlight! link TodoBgNOTE QuickFixLine]])
+  vim.cmd([[highlight! Visual gui=bold guibg=#474544]])
 end)
 
 require('nvim-highlight-colors').turnOn()
