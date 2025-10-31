@@ -834,7 +834,6 @@ require("lazy").setup({
   "Asheq/close-buffers.vim",
 })
 
--- TODO: look into options here
 require('ibl').setup {
   indent = { char = "┆" },
 }
