@@ -847,15 +847,29 @@ vim.schedule(function()
   local brightened = [[#474544]]
   local greentint = [[#242a1f]]
   local redtint = [[#261f1f]]
+
+  vim.cmd([[highlight! link NormalFloat Normal]])
+
+
   vim.cmd([[highlight! link TodoBgTODO PmenuSel]])
   vim.cmd([[highlight! link TodoFgTODO Conceal]])
   vim.cmd([[highlight! link TodoBgNOTE TodoBgTODO]])
   vim.cmd([[highlight! link TodoFgNOTE TodoFgTODO]])
+
   vim.cmd([[highlight! DiffAdd guifg=NONE gui=NONE guifg=NONE guibg=]] .. greentint)
   vim.cmd([[highlight! DiffDelete guifg=NONE gui=NONE guifg=NONE guibg=]] .. redtint)
   vim.cmd([[highlight! Visual gui=bold guibg=]] .. brightened)
   vim.cmd([[highlight! CursorLine guibg=]] .. darkened)
   vim.cmd([[highlight! CursorLineNr guibg=]] .. darkened)
+
+  vim.cmd([[highlight SignColumn guibg=]] .. darkened)
+  vim.cmd([[highlight! link GitGutterAdd GruvboxGreenBold]])
+  vim.cmd([[highlight! link GitGutterChange GruvboxBlueBold]])
+  vim.cmd([[highlight! link GitGutterDelete GruvboxRedBold]])
+  vim.cmd([[highlight! GitSignsStagedAdd guibg=]] .. darkened)
+  vim.cmd([[highlight! GitSignsStagedChange guibg=]] .. darkened)
+  vim.cmd([[highlight! GitSignsStagedDelete guibg=]] .. darkened)
+
 
 end)
 
