@@ -843,11 +843,20 @@ vim.schedule(function()
   -- setupLualine()
   vim.cmd([[highlight! link QuickFixLine PmenuSel]])
 
+  local darkened = [[#252423]]
+  local brightened = [[#474544]]
+  local greentint = [[#242a1f]]
+  local redtint = [[#261f1f]]
   vim.cmd([[highlight! link TodoBgTODO PmenuSel]])
   vim.cmd([[highlight! link TodoFgTODO Conceal]])
   vim.cmd([[highlight! link TodoBgNOTE TodoBgTODO]])
   vim.cmd([[highlight! link TodoFgNOTE TodoFgTODO]])
-  vim.cmd([[highlight! Visual gui=bold guibg=#474544]])
+  vim.cmd([[highlight! DiffAdd guifg=NONE gui=NONE guifg=NONE guibg=]] .. greentint)
+  vim.cmd([[highlight! DiffDelete guifg=NONE gui=NONE guifg=NONE guibg=]] .. redtint)
+  vim.cmd([[highlight! Visual gui=bold guibg=]] .. brightened)
+  vim.cmd([[highlight! CursorLine guibg=]] .. darkened)
+  vim.cmd([[highlight! CursorLineNr guibg=]] .. darkened)
+
 end)
 
 require('nvim-highlight-colors').turnOn()
