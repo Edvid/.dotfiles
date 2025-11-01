@@ -917,13 +917,15 @@ vim.keymap.set('n', '<leader>cl', [[:Bd other<CR>]])
 -- TODO: use this "smart color column" for the COMMIT_EDITMSG auto command
 vim.keymap.set('n', '<leader>col', [[:let cctw=input("text width: ") | exe 'set tw=' .. cctw | let cctw += 1 | exe 'set cc=' .. cctw<CR>]], { desc = 'Color in [COL]umn at given number' })
 
--- NOTE: prefer launching the mergetool from commandline
--- with 'git mergetool' instead of <leader>gd
--- vim.keymap.set('n', '<leader>gd', [[:Gdiff!<CR>]], { desc = 'Fu[git]ive [d]iff'} )
-
--- NOTE: vim has a native mapping 'dp' for :diffput
-vim.keymap.set('n', '<leader>gk', [[:diffget //2<CR>]], { desc = 'diffget grab up'} )
-vim.keymap.set('n', '<leader>gj', [[:diffget //3<CR>]], { desc = 'diffget grab down'} )
+vim.keymap.set('n', '<leader>gd', function ()
+  vim.cmd([[Gdiff!]])
+  -- treat worktree version of the file as the //2 version and
+  -- diff only between the //3 and worktree (now identical to //2)
+  vim.cmd([[norm!k]])
+  vim.cmd([[norm!gg"gyG]])
+  vim.cmd([[bw]])
+  vim.cmd([[norm!gg"_dG"gP]])
+end, { desc = 'Fu[git]ive [d]iff'} )
 
 -- convenient search instead of /
 vim.keymap.set({ 'n', 'v' }, '<leader>f', [[/]])
