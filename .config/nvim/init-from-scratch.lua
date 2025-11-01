@@ -847,7 +847,7 @@ vim.schedule(function()
   vim.cmd([[highlight! link QuickFixLine PmenuSel]])
 
   local darkened = [[#252423]]
-  local brightened = [[#474544]]
+  local brightened = [[#383736]]
   local slightly_brightened = [[#333231]]
   local greentint = [[#242a1f]]
   local redtint = [[#261f1f]]
@@ -863,7 +863,7 @@ vim.schedule(function()
 
   vim.cmd([[highlight! DiffAdd guifg=NONE gui=NONE guifg=NONE guibg=]] .. greentint)
   vim.cmd([[highlight! DiffDelete guifg=NONE gui=NONE guifg=NONE guibg=]] .. redtint)
-  vim.cmd([[highlight! Visual gui=bold guibg=]] .. brightened)
+  vim.cmd([[highlight! Visual gui=NONE guibg=]] .. brightened)
   vim.cmd([[highlight! CursorLine guibg=]] .. darkened)
   vim.cmd([[highlight! CursorLineNr guibg=]] .. darkened)
 
