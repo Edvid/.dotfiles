@@ -808,7 +808,9 @@ vim.schedule(function()
   local brightened = [[#383736]]
   local slightly_brightened = [[#333231]]
   local greentint = [[#242a1f]]
-  local redtint = [[#261f1f]]
+  local more_greentint = [[#283824]]
+  local even_more_greentint = [[#384a2a]]
+  local redtint = [[#2a2323]]
 
   vim.cmd([[highlight NormalFloat guibg=]] .. slightly_brightened)
   vim.cmd([[highlight! link Float NormalFloat]])
@@ -819,19 +821,25 @@ vim.schedule(function()
   vim.cmd([[highlight! link TodoBgNOTE TodoBgTODO]])
   vim.cmd([[highlight! link TodoFgNOTE TodoFgTODO]])
 
-  vim.cmd([[highlight! DiffAdd guifg=NONE gui=NONE guifg=NONE guibg=]] .. greentint)
-  vim.cmd([[highlight! DiffDelete guifg=NONE gui=NONE guifg=NONE guibg=]] .. redtint)
-  vim.cmd([[highlight! Visual gui=NONE guibg=]] .. brightened)
-  vim.cmd([[highlight! CursorLine guibg=]] .. darkened)
-  vim.cmd([[highlight! CursorLineNr guibg=]] .. darkened)
+  vim.cmd([[highlight DiffAdd guifg=NONE gui=NONE guifg=NONE guibg=]] .. greentint)
+  vim.cmd([[highlight DiffDelete guifg=NONE gui=NONE guifg=NONE guibg=]] .. redtint)
+  vim.cmd([[highlight Visual gui=NONE guibg=]] .. brightened)
+  vim.cmd([[highlight CursorLine guibg=]] .. darkened)
+  vim.cmd([[highlight CursorLineNr guibg=]] .. darkened)
+
 
   vim.cmd([[highlight SignColumn guibg=]] .. darkened)
+
   vim.cmd([[highlight! link GitGutterAdd GruvboxGreenBold]])
   vim.cmd([[highlight! link GitGutterChange GruvboxBlueBold]])
   vim.cmd([[highlight! link GitGutterDelete GruvboxRedBold]])
-  vim.cmd([[highlight! GitSignsStagedAdd guibg=]] .. darkened)
-  vim.cmd([[highlight! GitSignsStagedChange guibg=]] .. darkened)
-  vim.cmd([[highlight! GitSignsStagedDelete guibg=]] .. darkened)
+
+  vim.cmd([[highlight GitSignsStagedAdd guibg=]] .. darkened)
+  vim.cmd([[highlight GitSignsStagedChange guibg=]] .. darkened)
+  vim.cmd([[highlight GitSignsStagedDelete guibg=]] .. darkened)
+
+  vim.cmd([[highlight DiffChange guifg=NONE gui=NONE guifg=NONE guibg=]] .. more_greentint)
+  vim.cmd([[highlight DiffText guifg=NONE gui=NONE guifg=NONE guibg=]] .. even_more_greentint)
 
 
 end)
