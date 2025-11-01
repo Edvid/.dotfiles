@@ -927,7 +927,7 @@ vim.keymap.set('n', '<leader>gj', [[:diffget //3<CR>]], { desc = 'diffget grab d
 
 -- convenient search instead of /
 vim.keymap.set({ 'n', 'v' }, '<leader>f', [[/]])
--- convenient macro execute instead of w@
+-- convenient macro execute instead of @
 vim.keymap.set({ 'n', 'v' }, '<leader>q', [[@]])
 
 -- reselect last pasted
