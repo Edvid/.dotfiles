@@ -848,10 +848,12 @@ vim.schedule(function()
 
   local darkened = [[#252423]]
   local brightened = [[#474544]]
+  local slightly_brightened = [[#333231]]
   local greentint = [[#242a1f]]
   local redtint = [[#261f1f]]
 
-  vim.cmd([[highlight! link NormalFloat Normal]])
+  vim.cmd([[highlight NormalFloat guibg=]] .. slightly_brightened)
+  vim.cmd([[highlight! link Float NormalFloat]])
 
 
   vim.cmd([[highlight! link TodoBgTODO PmenuSel]])
@@ -885,6 +887,9 @@ require('fine-cmdline').setup({
       row = '50%',
     },
     size = { width = '40%' },
+    win_options = {
+      winhighlight = 'Normal:FloatBorder,FloatBorder:FloatBorder'
+    },
   }
 })
 
