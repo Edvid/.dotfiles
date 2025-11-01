@@ -802,9 +802,6 @@ require('ibl').setup {
 -- setup for lualine
 vim.schedule(function()
   vim.cmd.colorscheme "gruvbox"
-  -- FIX: reintroduce this and make background toggling possible again.
-  -- Do it in a new file.
-  -- setupLualine()
   vim.cmd([[highlight! link QuickFixLine PmenuSel]])
 
   local darkened = [[#252423]]
@@ -920,7 +917,10 @@ vim.keymap.set('n', '<leader>cl', [[:Bd other<CR>]])
 -- TODO: use this "smart color column" for the COMMIT_EDITMSG auto command
 vim.keymap.set('n', '<leader>col', [[:let cctw=input("text width: ") | exe 'set tw=' .. cctw | let cctw += 1 | exe 'set cc=' .. cctw<CR>]], { desc = 'Color in [COL]umn at given number' })
 
-vim.keymap.set('n', '<leader>gd', [[:Gdiff3!<CR>]], { desc = 'Fu[git]ive [d]iff'} )
+-- NOTE: prefer launching the mergetool from commandline
+-- with 'git mergetool' instead of <leader>gd
+-- vim.keymap.set('n', '<leader>gd', [[:Gdiff!<CR>]], { desc = 'Fu[git]ive [d]iff'} )
+
 -- NOTE: vim has a native mapping 'dp' for :diffput
 vim.keymap.set('n', '<leader>gk', [[:diffget //2<CR>]], { desc = 'diffget grab up'} )
 vim.keymap.set('n', '<leader>gj', [[:diffget //3<CR>]], { desc = 'diffget grab down'} )
