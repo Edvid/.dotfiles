@@ -371,7 +371,8 @@ require("lazy").setup({
           -- or a suggestion from your LSP for this to activate.
           map('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction', { 'n', 'x' })
 
-          map('<leader>K', vim.lsp.buf.hover, 'Hover documentation')
+          -- NOTE: should be the default anyway
+          -- map('K', vim.lsp.buf.hover, 'Hover documentation')
 
           -- Find references for the word under your cursor.
           map('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
@@ -951,13 +952,23 @@ vim.keymap.set({ 'n', 'v' }, '<leader>q', [[@]])
 -- reselect last pasted
 vim.keymap.set('n', 'gp', '`[v`]', { desc = "Reselect last pasted" })
 
+vim.keymap.set('n', 'J', [[<Nop>]])
+
 -- join lines + keep cursor position
-vim.keymap.set('n', '<leader>J', [[mz<cmd>join<CR>`z]])
-vim.keymap.set('v', '<leader>J', [[mz<cmd>'<,'>join<CR>`z]])
+vim.keymap.set('n', 'J', [[mz<cmd>join<CR>`z]])
+
+-- I would like to move lines below and above conveniently with J and K
+-- in view mode, so <Leader>J it is for joining in view mode
+vim.keymap.set('v', '<Leader>J', [[mz<cmd>'<,'>join<CR>`z]])
 
 -- move lines below or above
-vim.keymap.set('n', 'J', [[:m +1<CR>==]])
-vim.keymap.set('n', 'K', [[:m -2<CR>==]])
+-- has to use <Leader> for normal mode, as
+-- K is reversed for lsp hover view and
+-- J is reserved joining
+vim.keymap.set('n', '<Leader>J', [[:m +1<CR>==]])
+vim.keymap.set('n', '<Leader>K', [[:m -2<CR>==]])
+
+-- I allow convenient K and J for view mode however
 vim.keymap.set('v', 'K', [[:m '<-2<CR>gv=gv]])
 vim.keymap.set('v', 'J', [[:m '>+1<CR>gv=gv]])
 
