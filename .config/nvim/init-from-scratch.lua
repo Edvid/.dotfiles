@@ -33,7 +33,7 @@ vim.opt.smartcase = true
 
 -- Keep signcolumn on by default
 -- SignColumn is the thing to the left of line numbers that can habour git signs
-vim.opt.signcolumn = 'yes'
+vim.opt.signcolumn = 'yes:2'
 
 -- Decrease update time
 vim.opt.updatetime = 250
@@ -121,6 +121,7 @@ require("lazy").setup({
         untracked = { text = '!' },
       },
       attach_to_untracked = true,
+      sign_priority = 20,
       on_attach = function(bufnr)
         local gs = package.loaded.gitsigns
 
@@ -412,7 +413,7 @@ require("lazy").setup({
             if vim.fn.has 'nvim-0.11' == 1 then
               return client:supports_method(method, bufnr)
             else
-              return client.supports_method(method, { bufnr = bufnr })
+              return client.supports_method( method, { bufnr = bufnr })
             end
           end
 
