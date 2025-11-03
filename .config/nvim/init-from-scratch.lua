@@ -809,6 +809,18 @@ require('ibl').setup {
   indent = { char = "┆" },
 }
 
+local gdscript = (function()
+  local port = os.getenv 'GDScript_Port' or '6005'
+  local cmd = vim.lsp.rpc.connect('127.0.0.1', tonumber(port))
+  return {
+    cmd = cmd,
+    filetypes = { 'gd', 'gdscript', 'gdscript3' },
+    root_markers = { 'project.godot', '.git' },
+  }
+end)()
+vim.lsp.enable('gdscript')
+vim.lsp.config('gdscript', gdscript)
+
 -- setup for lualine
 vim.schedule(function()
   vim.cmd.colorscheme "gruvbox"
