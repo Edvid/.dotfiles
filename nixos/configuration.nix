@@ -147,6 +147,7 @@ in
     starship
     blesh
     carapace
+    godotPackages_4_5.godot
   ];
 
   environment.variables = {
