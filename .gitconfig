@@ -12,6 +12,8 @@
 [core]
   pager = less
   editor = nvim
+[merge]
+	tool = nvimdiff2
 [credential]
   helper = store --file ~/.git.credentials
 [push]
