@@ -859,6 +859,7 @@ vim.schedule(function()
   vim.cmd([[highlight GitSignsStagedAdd guibg=]] .. darkened)
   vim.cmd([[highlight GitSignsStagedChange guibg=]] .. darkened)
   vim.cmd([[highlight GitSignsStagedDelete guibg=]] .. darkened)
+  vim.cmd([[highlight GitSignsStagedTopDelete guibg=]] .. darkened)
 
   vim.cmd([[highlight DiffChange guifg=NONE gui=NONE guifg=NONE guibg=]] .. more_greentint)
   vim.cmd([[highlight DiffText guifg=NONE gui=NONE guifg=NONE guibg=]] .. even_more_greentint)
