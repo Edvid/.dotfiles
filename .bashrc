@@ -79,6 +79,7 @@ eval "$(starship init bash)"
 
 dconf write /org/gnome/desktop/a11y/keyboard/mousekeys-enable true
 
+export PATH="$PATH:/$HOME/furnace"
 
 # fnm
 FNM_PATH="/home/$USERNAME/.local/share/fnm"
